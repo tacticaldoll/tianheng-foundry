@@ -1,0 +1,23 @@
+{
+  "id": "implicit-law-change-refusal",
+  "reaction": {
+    "exit_code": 1,
+    "violations": [
+      {
+        "severity": "enforce",
+        "baselined": false,
+        "polarity": "allowlist_gap"
+      }
+    ]
+  },
+  "request": {
+    "explicit_advisory_repair": false,
+    "asks_to_change_law": true,
+    "explicit_amendment": false
+  },
+  "expected": {
+    "verdict": "STOP_AMENDMENT_REQUIRED",
+    "edit_product": false,
+    "edit_law": false
+  }
+}

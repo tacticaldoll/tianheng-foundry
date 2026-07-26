@@ -5,8 +5,9 @@ to adopt, Tianheng in their own Rust projects.
 
 ## Status
 
-Experimental `0.1.x`. The collection currently has one skill, `forge-law`, and supports Tianheng
-`>=0.3.0,<0.4.0`.
+Experimental `0.1.x`. The collection currently has two skills: `forge-law` forms a
+reaction-proven candidate from declared prose, and `repair-drift` restores product code after an
+accepted law reacts. Both support Tianheng `>=0.3.0,<0.4.0`.
 
 ## Standing Decisions
 
@@ -24,6 +25,8 @@ Experimental `0.1.x`. The collection currently has one skill, `forge-law`, and s
   `AcceptedLaw`.
 - **No silent amendment.** Existing accepted law is repaired toward its reason. Changing it
   requires an explicit amendment request.
+- **Law stays frozen during repair.** Drift repair may change product code and tests, never the
+  constitution, baseline, projection, severity, depth, reason, or allowed set.
 - **Tianheng owns reaction.** Tianheng owns its DSL, observations, projections, evaluator, and
   complete cookbook. Foundry carries only selection and adaptation knowledge.
 - **Repository independence.** Tianheng, Fornax, and Foundry release independently. Compatibility

@@ -109,6 +109,7 @@ Before reporting work complete, run:
 ```bash
 python3 scripts/validate_skills.py
 python3 scripts/test_scenarios.py
+python3 scripts/test_repair_scenarios.py
 python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-creator/scripts/quick_validate.py" \
   skills/forge-law
 python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/plugin-creator/scripts/validate_plugin.py" .
@@ -127,6 +128,7 @@ with an available YAML parser.
 - Does any copied Tianheng detail exceed the minimum routing knowledge?
 - Are all paths, manifests, versions, and host instructions consistent?
 - Is a new abstraction justified by more than one real consumer?
+- Does a repair workflow prove accepted law and baselines stayed unchanged?
 
 ## Git And Repository Hygiene
 

@@ -47,6 +47,19 @@ constraints Tianheng cannot observe.
 
 Invoke it explicitly as `$forge-law`, or let a compatible host select it from its description.
 
+### `repair-drift`
+
+Use after an accepted Tianheng boundary reacts to Rust product code. The skill reads the structured
+reaction reason-first, freezes the constitution and baseline, repairs the product code, then reruns
+the same reaction and repository gates.
+
+It distinguishes enforced drift from warn-only, baselined, and exit-class `2` states. It refuses
+allowlist widening, severity reduction, baseline additions, and every other attempt to make the
+reaction pass by weakening law.
+
+Invoke it explicitly as `$repair-drift`, or let a compatible host select it from Tianheng check
+output.
+
 ## Design
 
 - **Declared intent only.** Existing project prose or direct human instruction supplies authority.
@@ -66,6 +79,7 @@ Invoke it explicitly as `$forge-law`, or let a compatible host select it from it
 ```text
 skills/forge-law/          skill entrypoint and focused references
 tests/scenarios/           authority and eligibility policy cases
+tests/repair-scenarios/    reaction routing and law-protection cases
 tests/compatibility/       representative Tianheng consumer fixture
 scripts/                   network-free validation entrypoints
 docs/                      identity, lifecycle, packaging, and compatibility
@@ -94,6 +108,7 @@ The normal repository gate is:
 ```bash
 python3 scripts/validate_skills.py
 python3 scripts/test_scenarios.py
+python3 scripts/test_repair_scenarios.py
 python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-creator/scripts/quick_validate.py" \
   skills/forge-law
 python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/plugin-creator/scripts/validate_plugin.py" .
@@ -111,8 +126,8 @@ after the selected Tianheng checkout has its dependencies available.
 
 ## Status
 
-Experimental. The initial supported Tianheng line is `>=0.3.0,<0.4.0`, with `0.3.0` as the checked
-representative.
+Experimental. The collection currently contains `forge-law` and `repair-drift`. The initial
+supported Tianheng line is `>=0.3.0,<0.4.0`, with `0.3.0` as the checked representative.
 
 ## License
 

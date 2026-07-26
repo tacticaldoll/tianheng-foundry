@@ -1,0 +1,23 @@
+{
+  "id": "enforced-allowlist-gap",
+  "reaction": {
+    "exit_code": 1,
+    "violations": [
+      {
+        "severity": "enforce",
+        "baselined": false,
+        "polarity": "allowlist_gap"
+      }
+    ]
+  },
+  "request": {
+    "explicit_advisory_repair": false,
+    "asks_to_change_law": false,
+    "explicit_amendment": false
+  },
+  "expected": {
+    "verdict": "REPAIR_PRODUCT",
+    "edit_product": true,
+    "edit_law": false
+  }
+}

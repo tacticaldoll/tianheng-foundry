@@ -1,0 +1,23 @@
+{
+  "id": "explicit-advisory-repair",
+  "reaction": {
+    "exit_code": 0,
+    "violations": [
+      {
+        "severity": "enforce",
+        "baselined": true,
+        "polarity": "allowlist_gap"
+      }
+    ]
+  },
+  "request": {
+    "explicit_advisory_repair": true,
+    "asks_to_change_law": false,
+    "explicit_amendment": false
+  },
+  "expected": {
+    "verdict": "REPAIR_PRODUCT",
+    "edit_product": true,
+    "edit_law": false
+  }
+}

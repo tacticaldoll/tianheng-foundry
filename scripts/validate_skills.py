@@ -12,6 +12,26 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 NAME = "tianheng-foundry"
 VERSION = "0.1.0"
+SKILLS = {
+    "forge-law": {
+        "description_boundary": "Do not use for non-Rust repositories",
+        "references": {
+            "claim-classification.md",
+            "recipe-index.md",
+            "reaction-proof.md",
+            "authority-transition.md",
+        },
+    },
+    "repair-drift": {
+        "description_boundary": "Do not use to create a new boundary",
+        "references": {
+            "reaction-contract.md",
+            "repair-polarities.md",
+            "law-protection.md",
+            "verification.md",
+        },
+    },
+}
 
 JSON_MANIFESTS = [
     "distribution.json",
@@ -34,16 +54,22 @@ REQUIRED_FILES = [
     "docs/host-packaging.md",
     "docs/skill-yaml-schema.md",
     "docs/tianheng-compatibility.md",
-    "skills/forge-law/SKILL.md",
-    "skills/forge-law/skill.yaml",
-    "skills/forge-law/agents/openai.yaml",
-    "skills/forge-law/references/claim-classification.md",
-    "skills/forge-law/references/recipe-index.md",
-    "skills/forge-law/references/reaction-proof.md",
-    "skills/forge-law/references/authority-transition.md",
     "tests/compatibility/consumer/Cargo.toml",
     "tests/compatibility/consumer/src/lib.rs",
 ]
+
+for skill_name, contract in SKILLS.items():
+    REQUIRED_FILES.extend(
+        [
+            f"skills/{skill_name}/SKILL.md",
+            f"skills/{skill_name}/skill.yaml",
+            f"skills/{skill_name}/agents/openai.yaml",
+            *[
+                f"skills/{skill_name}/references/{reference}"
+                for reference in sorted(contract["references"])
+            ],
+        ]
+    )
 
 
 def fail(failures: list[str], message: str) -> None:
@@ -114,36 +140,60 @@ def main() -> int:
     if compatibility.get("tianheng", {}).get("source_env") != "TIANHENG_SOURCE":
         fail(failures, "compatibility.json: local source input must be TIANHENG_SOURCE")
 
-    skill_path = ROOT / "skills/forge-law/SKILL.md"
-    if skill_path.is_file():
-        skill = skill_path.read_text()
-        if "[TODO" in skill:
-            fail(failures, "skills/forge-law/SKILL.md contains TODO placeholders")
-        if not skill.startswith("---\nname: forge-law\n"):
-            fail(failures, "skills/forge-law/SKILL.md has invalid frontmatter")
-        if "Do not use for non-Rust repositories" not in skill:
-            fail(failures, "forge-law description must exclude non-Rust repositories")
-        for reference in re.findall(r"\(references/([^)]+)\)", skill):
-            if not (skill_path.parent / "references" / reference).is_file():
-                fail(failures, f"forge-law links missing reference: {reference}")
+    for skill_name, contract in SKILLS.items():
+        skill_path = ROOT / "skills" / skill_name / "SKILL.md"
+        if skill_path.is_file():
+            skill = skill_path.read_text()
+            if "[TODO" in skill:
+                fail(failures, f"skills/{skill_name}/SKILL.md contains TODO placeholders")
+            if not skill.startswith(f"---\nname: {skill_name}\n"):
+                fail(failures, f"skills/{skill_name}/SKILL.md has invalid frontmatter")
+            if contract["description_boundary"] not in skill:
+                fail(
+                    failures,
+                    f"{skill_name} description must contain its negative trigger boundary",
+                )
+            linked_references = set(re.findall(r"\(references/([^)]+)\)", skill))
+            if linked_references != contract["references"]:
+                fail(
+                    failures,
+                    f"{skill_name} must link exactly its declared references",
+                )
 
-    skill_yaml = ROOT / "skills/forge-law/skill.yaml"
-    if skill_yaml.is_file():
-        text = skill_yaml.read_text()
-        for required in ["name: forge-law", f"version: {VERSION}", "entrypoint: SKILL.md"]:
-            if required not in text:
-                fail(failures, f"skill.yaml missing {required!r}")
+        skill_yaml = ROOT / "skills" / skill_name / "skill.yaml"
+        if skill_yaml.is_file():
+            text = skill_yaml.read_text()
+            for required in [
+                f"name: {skill_name}",
+                f"version: {VERSION}",
+                "entrypoint: SKILL.md",
+            ]:
+                if required not in text:
+                    fail(failures, f"{skill_name}/skill.yaml missing {required!r}")
 
     if (ROOT / ".gitmodules").exists():
         fail(failures, "git submodules are forbidden")
 
-    openai_yaml = ROOT / "skills/forge-law/agents/openai.yaml"
-    if openai_yaml.is_file() and "allow_implicit_invocation: true" not in openai_yaml.read_text():
-        fail(failures, "forge-law must explicitly permit implicit invocation")
+    for skill_name in SKILLS:
+        openai_yaml = ROOT / "skills" / skill_name / "agents" / "openai.yaml"
+        if (
+            openai_yaml.is_file()
+            and "allow_implicit_invocation: true" not in openai_yaml.read_text()
+        ):
+            fail(failures, f"{skill_name} must explicitly permit implicit invocation")
 
     scenario_count = len(list((ROOT / "tests" / "scenarios").glob("*.json")))
     if scenario_count < 9:
         fail(failures, f"expected at least 9 scenarios, found {scenario_count}")
+
+    repair_scenario_count = len(
+        list((ROOT / "tests" / "repair-scenarios").glob("*.json"))
+    )
+    if repair_scenario_count < 7:
+        fail(
+            failures,
+            f"expected at least 7 repair scenarios, found {repair_scenario_count}",
+        )
 
     if failures:
         for message in failures:

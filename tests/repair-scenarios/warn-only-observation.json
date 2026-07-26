@@ -1,0 +1,23 @@
+{
+  "id": "warn-only-observation",
+  "reaction": {
+    "exit_code": 0,
+    "violations": [
+      {
+        "severity": "warn",
+        "baselined": false,
+        "polarity": "deny_breach"
+      }
+    ]
+  },
+  "request": {
+    "explicit_advisory_repair": false,
+    "asks_to_change_law": false,
+    "explicit_amendment": false
+  },
+  "expected": {
+    "verdict": "REPORT_ADVISORY",
+    "edit_product": false,
+    "edit_law": false
+  }
+}
