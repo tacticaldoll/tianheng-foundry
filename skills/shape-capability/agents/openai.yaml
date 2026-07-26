@@ -1,0 +1,6 @@
+interface:
+  display_name: "Shape Tianheng Capability"
+  short_description: "Turn observation gaps into bounded capability pressure"
+  default_prompt: "Use $shape-capability to shape this unobservable Rust architecture claim into an upstream-ready Tianheng capability pressure."
+policy:
+  allow_implicit_invocation: true

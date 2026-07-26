@@ -7,3 +7,4 @@ python3 scripts/test_repair_scenarios.py
 python3 scripts/test_amendment_scenarios.py
 python3 scripts/test_activation_scenarios.py
 python3 scripts/test_review_scenarios.py
+python3 scripts/test_capability_scenarios.py

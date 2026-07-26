@@ -1,0 +1,6 @@
+{
+  "id": "non-structural-claim",
+  "repository": {"rust": true, "tianheng_or_adoption": true, "supported_version": true, "cross_language": false},
+  "claim": {"authority": true, "structural": false, "existing_recipe": false, "observation_source": null, "feasible": false},
+  "expected": {"verdict": "DOCUMENT_ONLY", "pressure_candidate": false, "observation_owner": "none", "write_upstream": false}
+}

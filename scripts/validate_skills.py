@@ -58,6 +58,15 @@ SKILLS = {
             "verdict-contract.md",
         },
     },
+    "shape-capability": {
+        "description_boundary": "Do not use when an existing recipe fits",
+        "references": {
+            "gap-classification.md",
+            "observation-contract.md",
+            "feasibility-and-risk.md",
+            "upstream-handoff.md",
+        },
+    },
 }
 
 JSON_MANIFESTS = [
@@ -247,6 +256,15 @@ def main() -> int:
         fail(
             failures,
             f"expected at least 15 review scenarios, found {review_scenario_count}",
+        )
+
+    capability_scenario_count = len(
+        list((ROOT / "tests" / "capability-scenarios").glob("*.json"))
+    )
+    if capability_scenario_count < 12:
+        fail(
+            failures,
+            f"expected at least 12 capability scenarios, found {capability_scenario_count}",
         )
 
     if failures:

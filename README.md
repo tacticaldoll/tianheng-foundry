@@ -95,6 +95,18 @@ It reports findings first and returns `ACCEPT_CANDIDATE`, `REVISE`, or `REJECT`.
 
 Invoke it explicitly as `$review-law`, or let a compatible host select it from a Tianheng law diff.
 
+### `shape-capability`
+
+Use when an authorized structural Rust claim has no supported Tianheng observation. The skill first
+proves the gap is not an overlooked recipe, compatibility mismatch, non-structural preference, or
+cross-language concern, then shapes an observation contract and fixture matrix.
+
+It produces upstream-ready capability pressure without writing a no-op adopter boundary or
+implementing Tianheng.
+
+Invoke it explicitly as `$shape-capability`, or let a compatible host select it from a reported
+capability-pressure stop.
+
 ## Design
 
 - **Declared intent only.** Existing project prose or direct human instruction supplies authority.
@@ -118,6 +130,7 @@ tests/repair-scenarios/    reaction routing and law-protection cases
 tests/amendment-scenarios/ amendment authority and proof-direction cases
 tests/activation-scenarios/ task-local law selection and routing cases
 tests/review-scenarios/     adversarial acceptance-gate cases
+tests/capability-scenarios/  observation-gap classification and ownership cases
 tests/compatibility/       representative Tianheng consumer fixture
 scripts/                   network-free validation entrypoints
 docs/                      identity, lifecycle, packaging, and compatibility
@@ -150,6 +163,7 @@ python3 scripts/test_repair_scenarios.py
 python3 scripts/test_amendment_scenarios.py
 python3 scripts/test_activation_scenarios.py
 python3 scripts/test_review_scenarios.py
+python3 scripts/test_capability_scenarios.py
 python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-creator/scripts/quick_validate.py" \
   skills/forge-law
 python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/plugin-creator/scripts/validate_plugin.py" .
@@ -168,8 +182,8 @@ after the selected Tianheng checkout has its dependencies available.
 ## Status
 
 Experimental. The collection currently contains `forge-law`, `activate-law`, `repair-drift`,
-`amend-law`, and `review-law`. The initial supported Tianheng line is `>=0.3.0,<0.4.0`, with
-`0.3.0` as the checked representative.
+`amend-law`, `review-law`, and `shape-capability`. The initial supported Tianheng line is
+`>=0.3.0,<0.4.0`, with `0.3.0` as the checked representative.
 
 ## License
 

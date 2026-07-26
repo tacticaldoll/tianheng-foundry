@@ -1,0 +1,18 @@
+name: shape-capability
+version: 0.1.0
+status: draft
+family: analysis
+description: Use to turn a demonstrated Tianheng observation gap into bounded upstream capability pressure.
+triggers:
+  - forge-law cannot map an authorized structural claim to a Tianheng observation
+  - amend-law cannot express an explicit law delta with the supported Tianheng surface
+  - review-law rejects a candidate because the claimed fact is not observable
+entrypoint: SKILL.md
+resources:
+  references: references/
+compatibility:
+  - openai-codex
+  - claude
+  - cursor
+  - gemini
+  - generic-llm-agent

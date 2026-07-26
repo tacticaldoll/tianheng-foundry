@@ -1,0 +1,6 @@
+{
+  "id": "unsupported-version",
+  "repository": {"rust": true, "tianheng_or_adoption": true, "supported_version": false, "cross_language": false},
+  "claim": {"authority": true, "structural": true, "existing_recipe": false, "observation_source": "syn_ast", "feasible": true},
+  "expected": {"verdict": "COMPATIBILITY_REQUIRED", "pressure_candidate": false, "observation_owner": "none", "write_upstream": false}
+}

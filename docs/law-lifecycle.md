@@ -6,6 +6,10 @@ ProseClaim
     | classify authority and claim
     v
 AdmittedIntent ---- unobservable ----> CapabilityPressure
+    |                                      |
+    |                                      | shape observation contract
+    |                                      v
+    |                               UpstreamCandidate
     |
     | select observation and recipe
     v
@@ -41,6 +45,8 @@ AcceptedLaw ---- deterministic projection ----> GeneratedContext
 |---|---|---|
 | `ProseClaim` | A project statement or direct human instruction | No |
 | `AdmittedIntent` | Structural, authorized, and potentially observable | Candidate work only |
+| `CapabilityPressure` | Authorized structural intent lacks a supported observer | No adopter law |
+| `UpstreamCandidate` | Observation contract and fixture matrix are reviewable | No; Tianheng-owned |
 | `BoundaryCandidate` | Generated boundary and reason, not yet proven | Candidate work only |
 | `VerifiedCandidate` | Teeth, precision, freshness, and compatibility are proven | Yes, still unaccepted |
 | `ReviewedCandidate` | Adversarial gates found no blocking defect | No; awaiting human acceptance |
@@ -70,7 +76,9 @@ A violation normally directs repair toward the accepted reason. Changing a targe
 parameter, scan depth, severity, or reason is an amendment and requires an explicit request.
 
 A claim Tianheng cannot observe becomes `CapabilityPressure`: evidence for a possible upstream
-capability, not a pretend boundary. It remains prose until a real observation exists.
+capability, not a pretend boundary. `shape-capability` may turn that pressure into an
+`UpstreamCandidate`, but the adopter claim remains prose until Tianheng accepts and implements a
+real observation.
 
 ## Prose Disposition
 

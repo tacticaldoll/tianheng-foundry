@@ -1,0 +1,6 @@
+{
+  "id": "infeasible-observation",
+  "repository": {"rust": true, "tianheng_or_adoption": true, "supported_version": true, "cross_language": false},
+  "claim": {"authority": true, "structural": true, "existing_recipe": false, "observation_source": "syn_ast", "feasible": false},
+  "expected": {"verdict": "DEFER_FEASIBILITY", "pressure_candidate": false, "observation_owner": "none", "write_upstream": false}
+}
