@@ -12,16 +12,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "24"
-      - name: Install OpenSpec
-        run: npm install --global @fission-ai/openspec@1.4.1
       - name: Validate distribution and scenarios
         run: |
-          python3 scripts/validate_repository.py
-          python3 scripts/run_scenarios.py
-          openspec validate --all
+          python3 scripts/validate_skills.py
+          python3 scripts/test_scenarios.py
 
   tianheng-compatibility:
     runs-on: ubuntu-latest
@@ -39,4 +33,4 @@ jobs:
       - name: Compile representative declarations
         env:
           TIANHENG_SOURCE: ${{ github.workspace }}/_tianheng
-        run: python3 scripts/check_compatibility.py
+        run: python3 scripts/check_tianheng_compatibility.py

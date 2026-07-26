@@ -1,69 +1,42 @@
-# Tianheng Foundry - Project Contract
+# Tianheng Foundry - Project
 
-Tianheng Foundry is a portable companion skill collection for Rust projects that use, or
-explicitly intend to adopt, Tianheng.
+Tianheng Foundry is a portable companion skill collection for people who use, or explicitly intend
+to adopt, Tianheng in their own Rust projects.
 
-## Purpose
+## Status
 
-The collection turns an already-declared architectural prose constraint into a candidate
-Tianheng law: Rust boundary code, a forward-looking reason, and proof that the boundary reacts
-on a violating fixture while remaining clean on a precision fixture.
+Experimental `0.1.x`. The collection currently has one skill, `forge-law`, and supports Tianheng
+`>=0.3.0,<0.4.0`.
 
-It does not invent architecture policy. It does not become a second source of law. A generated
-diff remains a candidate until a human accepts it; the adopter's Rust `Constitution` is the
-authority, its generated projection is context, and Tianheng's evaluator is the reaction.
+## Standing Decisions
 
-## Context Lifecycle
+- **Controlled writing.** Foundry may generate Rust boundary and proof code, but only after its
+  eligibility and authority gates pass.
+- **Declared intent.** Project prose and direct human instruction may authorize a candidate.
+  Repository shape and generic best practice may not.
+- **Structural scope.** The initial workflow governs observable Rust architecture. Subjective,
+  procedural, and historical claims remain prose.
+- **Observation before generation.** Every candidate names a Tianheng observation source, target,
+  and rule before code is written.
+- **Proof before replacement.** A candidate proves teeth, precision, projection freshness, and
+  compatibility before suggesting that source prose be removed or narrowed.
+- **Human authority.** Generated code is a `VerifiedCandidate`; only human review promotes it to
+  `AcceptedLaw`.
+- **No silent amendment.** Existing accepted law is repaired toward its reason. Changing it
+  requires an explicit amendment request.
+- **Tianheng owns reaction.** Tianheng owns its DSL, observations, projections, evaluator, and
+  complete cookbook. Foundry carries only selection and adaptation knowledge.
+- **Repository independence.** Tianheng, Fornax, and Foundry release independently. Compatibility
+  is declared and tested; no repository is vendored or attached as a git submodule.
+- **One skill until evidence.** A new skill requires an independent trigger, output, and failure
+  mode. Collection size is not a goal.
 
-```text
-prose claim
-  -> classified claim
-  -> observable intent
-  -> boundary candidate
-  -> reaction-proven candidate
-  -> human-accepted Constitution
-  -> generated projection
-  -> code change
-  -> reaction
-  -> repair or deliberate amendment
-```
+## Non-goals
 
-Skills belong only where a transition needs domain judgment or controlled edits. Deterministic
-projection, evaluation, and exit classification remain Tianheng's work.
-
-## Laws
-
-- **Rust-only eligibility.** A writing workflow acts only inside a discovered Cargo workspace.
-  A non-Rust repository is out of scope. In a mixed-language monorepo, only the Cargo workspace
-  subtree is eligible.
-- **Tianheng qualification.** An existing Tianheng dependency or law source qualifies a
-  workspace. Initial adoption requires an explicit user request; a generic Rust repository is
-  never silently enrolled.
-- **Declared intent only.** Project prose and direct human instruction are evidence of intent.
-  Repository shape or generic best practice is not authority to create a law.
-- **Observation before generation.** A claim becomes code only when it maps to a real Tianheng
-  observation source, target, and rule. Otherwise the workflow declines or narrows the claim.
-- **Proof before replacement.** Generated law does not replace prose until a violating case
-  reacts, a clean case stays clean, the projection is fresh, and a human accepts the change.
-- **No silent amendment.** A failing law is repaired toward its reason. Weakening, removing, or
-  replacing an accepted law requires an explicit amendment request.
-- **No copied authority.** Tianheng owns its public API, specifications, and complete cookbook.
-  This collection carries only the selection and adaptation knowledge needed for supported
-  versions.
-- **No repository coupling.** Tianheng, Fornax, and this collection remain independent
-  repositories. Compatibility is explicit and tested; git submodules are not used.
-
-## Initial Scope
-
-The first release contains one skill: `forge-law`. It covers eligibility, claim classification,
-observation admission, recipe selection, controlled candidate edits, reaction proof, projection
-freshness, and safe prose disposition as one transaction.
-
-Review, reaction triage, and task-local law activation remain unnamed future candidates until
-their independent inputs, outputs, and failure modes are demonstrated.
-
-## Compatibility
-
-The initial compatibility target is Tianheng `0.3.x`. Compatibility means the skill's referenced
-public concepts and representative generated boundary forms remain valid; it does not make the
-skill a dependency of Tianheng or Tianheng a vendored dependency of this repository.
+- Supplying architecture policy to an adopter.
+- Governing non-Rust portions of a mixed-language repository.
+- Replacing Tianheng's public documentation or copying its complete cookbook.
+- Treating generated projection as an independently editable source of truth.
+- Weakening accepted boundaries to make a reaction pass.
+- Creating wrappers around deterministic Tianheng projection or evaluation.
+- Promising compatibility with an untested Tianheng release line.

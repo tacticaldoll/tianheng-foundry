@@ -30,8 +30,9 @@ REQUIRED_FILES = [
     "README.md",
     "LICENSE",
     "docs/identity.md",
-    "docs/context-lifecycle.md",
-    "docs/authority-model.md",
+    "docs/law-lifecycle.md",
+    "docs/host-packaging.md",
+    "docs/skill-yaml-schema.md",
     "docs/tianheng-compatibility.md",
     "skills/forge-law/SKILL.md",
     "skills/forge-law/skill.yaml",
@@ -40,7 +41,8 @@ REQUIRED_FILES = [
     "skills/forge-law/references/recipe-index.md",
     "skills/forge-law/references/reaction-proof.md",
     "skills/forge-law/references/authority-transition.md",
-    "openspec/config.yaml",
+    "tests/compatibility/consumer/Cargo.toml",
+    "tests/compatibility/consumer/src/lib.rs",
 ]
 
 
@@ -66,7 +68,6 @@ def main() -> int:
             fail(failures, f"{relative}: invalid JSON: {error}")
 
     for relative in [
-        ".codex-plugin/plugin.json",
         ".claude-plugin/plugin.json",
         ".cursor-plugin/plugin.json",
         "gemini-extension.json",
@@ -78,11 +79,20 @@ def main() -> int:
         if data.get("version") != VERSION:
             fail(failures, f"{relative}: version must be {VERSION!r}")
 
+    codex = parsed.get(".codex-plugin/plugin.json", {})
+    if codex.get("name") != NAME:
+        fail(failures, f".codex-plugin/plugin.json: name must be {NAME!r}")
+    codex_version = codex.get("version", "")
+    if codex_version != VERSION and not codex_version.startswith(f"{VERSION}+codex."):
+        fail(
+            failures,
+            ".codex-plugin/plugin.json: version must match the release or use a Codex cachebuster",
+        )
+
     distribution = parsed.get("distribution.json", {})
     if distribution.get("skills_directory") != "skills":
         fail(failures, "distribution.json: skills_directory must be 'skills'")
 
-    codex = parsed.get(".codex-plugin/plugin.json", {})
     if codex.get("skills") != "./skills/":
         fail(failures, ".codex-plugin/plugin.json: skills must be './skills/'")
 
@@ -131,7 +141,7 @@ def main() -> int:
     if openai_yaml.is_file() and "allow_implicit_invocation: true" not in openai_yaml.read_text():
         fail(failures, "forge-law must explicitly permit implicit invocation")
 
-    scenario_count = len(list((ROOT / "scenarios").glob("*.json")))
+    scenario_count = len(list((ROOT / "tests" / "scenarios").glob("*.json")))
     if scenario_count < 9:
         fail(failures, f"expected at least 9 scenarios, found {scenario_count}")
 

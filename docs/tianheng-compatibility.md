@@ -7,7 +7,7 @@ The recipe index carries routing knowledge and observation bounds, not a complet
 Representative public vocabulary is compiled against a local checkout:
 
 ```bash
-TIANHENG_SOURCE=/path/to/tianheng python3 scripts/check_compatibility.py
+TIANHENG_SOURCE=/path/to/tianheng python3 scripts/check_tianheng_compatibility.py
 ```
 
 The runner copies its consumer fixture into a temporary directory, patches every Tianheng family

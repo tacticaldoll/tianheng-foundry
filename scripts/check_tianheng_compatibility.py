@@ -40,7 +40,7 @@ def main() -> int:
 
     with tempfile.TemporaryDirectory(prefix="tianheng-foundry-compat-") as temporary:
         work = Path(temporary) / "consumer"
-        shutil.copytree(ROOT / "compatibility" / "consumer", work)
+        shutil.copytree(ROOT / "tests" / "compatibility" / "consumer", work)
         environment = os.environ.copy()
         environment["CARGO_TARGET_DIR"] = str(Path(temporary) / "target")
         command = [
