@@ -60,6 +60,18 @@ reaction pass by weakening law.
 Invoke it explicitly as `$repair-drift`, or let a compatible host select it from Tianheng check
 output.
 
+### `amend-law`
+
+Use only when a user explicitly requests a deliberate change to an existing accepted Tianheng
+boundary. The skill snapshots accepted behavior, classifies the change as tighten, loosen,
+retarget, reason correction, or removal, and proves the exact before/after reaction delta.
+
+It keeps candidate authority separate from acceptance, exposes observation lost by loosening or
+removal, and refuses vague green-CI authority.
+
+Invoke it explicitly as `$amend-law`, or let a compatible host select it from an explicit
+amendment request.
+
 ## Design
 
 - **Declared intent only.** Existing project prose or direct human instruction supplies authority.
@@ -80,6 +92,7 @@ output.
 skills/forge-law/          skill entrypoint and focused references
 tests/scenarios/           authority and eligibility policy cases
 tests/repair-scenarios/    reaction routing and law-protection cases
+tests/amendment-scenarios/ amendment authority and proof-direction cases
 tests/compatibility/       representative Tianheng consumer fixture
 scripts/                   network-free validation entrypoints
 docs/                      identity, lifecycle, packaging, and compatibility
@@ -109,6 +122,7 @@ The normal repository gate is:
 python3 scripts/validate_skills.py
 python3 scripts/test_scenarios.py
 python3 scripts/test_repair_scenarios.py
+python3 scripts/test_amendment_scenarios.py
 python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-creator/scripts/quick_validate.py" \
   skills/forge-law
 python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/plugin-creator/scripts/validate_plugin.py" .
@@ -126,8 +140,8 @@ after the selected Tianheng checkout has its dependencies available.
 
 ## Status
 
-Experimental. The collection currently contains `forge-law` and `repair-drift`. The initial
-supported Tianheng line is `>=0.3.0,<0.4.0`, with `0.3.0` as the checked representative.
+Experimental. The collection currently contains `forge-law`, `repair-drift`, and `amend-law`. The
+initial supported Tianheng line is `>=0.3.0,<0.4.0`, with `0.3.0` as the checked representative.
 
 ## License
 

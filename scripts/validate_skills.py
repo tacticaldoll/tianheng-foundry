@@ -31,6 +31,15 @@ SKILLS = {
             "verification.md",
         },
     },
+    "amend-law": {
+        "description_boundary": "Do not use for new prose-to-law conversion",
+        "references": {
+            "authority-gate.md",
+            "amendment-classification.md",
+            "proof-matrix.md",
+            "migration-and-projection.md",
+        },
+    },
 }
 
 JSON_MANIFESTS = [
@@ -193,6 +202,15 @@ def main() -> int:
         fail(
             failures,
             f"expected at least 7 repair scenarios, found {repair_scenario_count}",
+        )
+
+    amendment_scenario_count = len(
+        list((ROOT / "tests" / "amendment-scenarios").glob("*.json"))
+    )
+    if amendment_scenario_count < 9:
+        fail(
+            failures,
+            f"expected at least 9 amendment scenarios, found {amendment_scenario_count}",
         )
 
     if failures:

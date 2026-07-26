@@ -1,0 +1,6 @@
+interface:
+  display_name: "Amend Tianheng Law"
+  short_description: "Change accepted Tianheng law deliberately"
+  default_prompt: "Use $amend-law to produce a verified amendment candidate for this accepted Tianheng boundary."
+policy:
+  allow_implicit_invocation: true

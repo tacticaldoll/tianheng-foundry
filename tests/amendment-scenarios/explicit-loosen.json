@@ -1,0 +1,18 @@
+{
+  "id": "explicit-loosen",
+  "repository": {
+    "existing_boundary": true,
+    "supported_version": true
+  },
+  "request": {
+    "explicit_amendment": true,
+    "authority_conflict": false,
+    "observable": true,
+    "class": "loosen"
+  },
+  "expected": {
+    "verdict": "AMEND_CANDIDATE",
+    "edit_law_candidate": true,
+    "proof_profile": "ENFORCED_TO_CLEAN_WITH_RETAINED_EDGE"
+  }
+}
