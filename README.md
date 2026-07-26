@@ -84,6 +84,17 @@ removal, and refuses vague green-CI authority.
 Invoke it explicitly as `$amend-law`, or let a compatible host select it from an explicit
 amendment request.
 
+### `review-law`
+
+Use when a candidate diff adds or changes Tianheng boundaries, reasons, baselines, proof fixtures,
+or generated projection. The skill runs sequential authority, observability, reaction, minimality,
+projection, and compatibility gates.
+
+It reports findings first and returns `ACCEPT_CANDIDATE`, `REVISE`, or `REJECT`. Even
+`ACCEPT_CANDIDATE` leaves acceptance with the human or steward.
+
+Invoke it explicitly as `$review-law`, or let a compatible host select it from a Tianheng law diff.
+
 ## Design
 
 - **Declared intent only.** Existing project prose or direct human instruction supplies authority.
@@ -106,6 +117,7 @@ tests/scenarios/           authority and eligibility policy cases
 tests/repair-scenarios/    reaction routing and law-protection cases
 tests/amendment-scenarios/ amendment authority and proof-direction cases
 tests/activation-scenarios/ task-local law selection and routing cases
+tests/review-scenarios/     adversarial acceptance-gate cases
 tests/compatibility/       representative Tianheng consumer fixture
 scripts/                   network-free validation entrypoints
 docs/                      identity, lifecycle, packaging, and compatibility
@@ -137,6 +149,7 @@ python3 scripts/test_scenarios.py
 python3 scripts/test_repair_scenarios.py
 python3 scripts/test_amendment_scenarios.py
 python3 scripts/test_activation_scenarios.py
+python3 scripts/test_review_scenarios.py
 python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-creator/scripts/quick_validate.py" \
   skills/forge-law
 python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/plugin-creator/scripts/validate_plugin.py" .
@@ -154,9 +167,9 @@ after the selected Tianheng checkout has its dependencies available.
 
 ## Status
 
-Experimental. The collection currently contains `forge-law`, `activate-law`, `repair-drift`, and
-`amend-law`. The initial supported Tianheng line is `>=0.3.0,<0.4.0`, with `0.3.0` as the checked
-representative.
+Experimental. The collection currently contains `forge-law`, `activate-law`, `repair-drift`,
+`amend-law`, and `review-law`. The initial supported Tianheng line is `>=0.3.0,<0.4.0`, with
+`0.3.0` as the checked representative.
 
 ## License
 

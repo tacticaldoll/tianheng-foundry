@@ -15,7 +15,11 @@ BoundaryCandidate
     v
 VerifiedCandidate
     |
-    | human review only
+    | adversarial candidate review
+    v
+ReviewedCandidate
+    |
+    | human acceptance only
     v
 AcceptedLaw ---- deterministic projection ----> GeneratedContext
     |                                               |
@@ -39,6 +43,7 @@ AcceptedLaw ---- deterministic projection ----> GeneratedContext
 | `AdmittedIntent` | Structural, authorized, and potentially observable | Candidate work only |
 | `BoundaryCandidate` | Generated boundary and reason, not yet proven | Candidate work only |
 | `VerifiedCandidate` | Teeth, precision, freshness, and compatibility are proven | Yes, still unaccepted |
+| `ReviewedCandidate` | Adversarial gates found no blocking defect | No; awaiting human acceptance |
 | `AcceptedLaw` | Human-reviewed constitution code | No silent changes |
 | `GeneratedContext` | Tianheng projection of accepted law | Never hand-edit |
 
@@ -49,7 +54,8 @@ claim into `AdmittedIntent`.
 
 Formation is the judgment-heavy loop owned by `forge-law`: eligibility, claim classification,
 observation admission, recipe selection, controlled generation, and proof. A successful run stops
-at `VerifiedCandidate`; human review performs the authority transition.
+at `VerifiedCandidate`; `review-law` may reject, revise, or mark it `ReviewedCandidate`, while human
+review alone performs the authority transition.
 
 ## Operation
 

@@ -1,0 +1,5 @@
+{
+  "id": "complete-amendment",
+  "candidate": {"law_candidate": true, "authority": true, "existing_law_change": true, "explicit_amendment": true, "baseline_change": false, "baseline_authority": false, "observable": true, "reason_bounded": true, "compatibility_evidence": true, "violating_proof": "enforced", "clean_precision": true, "redundant": false, "projection_fresh": true},
+  "expected": {"verdict": "ACCEPT_CANDIDATE", "blocking_finding": "NONE", "acceptance_authority": "HUMAN"}
+}

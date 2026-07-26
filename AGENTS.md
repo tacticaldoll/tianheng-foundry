@@ -112,6 +112,7 @@ python3 scripts/test_scenarios.py
 python3 scripts/test_repair_scenarios.py
 python3 scripts/test_amendment_scenarios.py
 python3 scripts/test_activation_scenarios.py
+python3 scripts/test_review_scenarios.py
 python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-creator/scripts/quick_validate.py" \
   skills/forge-law
 python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/plugin-creator/scripts/validate_plugin.py" .
@@ -133,6 +134,7 @@ with an available YAML parser.
 - Does a repair workflow prove accepted law and baselines stayed unchanged?
 - Does an amendment disclose observation gained or lost and prove both changed and stable outcomes?
 - Does activation select by observable task impact while leaving projection and code untouched?
+- Does review preserve independence, lead with findings, and leave acceptance human-owned?
 
 ## Git And Repository Hygiene
 

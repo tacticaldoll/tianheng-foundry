@@ -1,0 +1,18 @@
+name: review-law
+version: 0.1.0
+status: draft
+family: analysis
+description: Use to adversarially review Tianheng law candidates before human acceptance.
+triggers:
+  - diff adds or changes Tianheng Constitution boundaries or reasons
+  - candidate changes a Tianheng baseline or generated projection
+  - user asks whether a forged or amended Tianheng law is ready for acceptance
+entrypoint: SKILL.md
+resources:
+  references: references/
+compatibility:
+  - openai-codex
+  - claude
+  - cursor
+  - gemini
+  - generic-llm-agent

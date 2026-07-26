@@ -1,0 +1,5 @@
+{
+  "id": "out-of-scope",
+  "candidate": {"law_candidate": false, "authority": false, "existing_law_change": false, "explicit_amendment": false, "baseline_change": false, "baseline_authority": false, "observable": false, "reason_bounded": false, "compatibility_evidence": false, "violating_proof": "missing", "clean_precision": false, "redundant": false, "projection_fresh": false},
+  "expected": {"verdict": "OUT_OF_SCOPE", "blocking_finding": "NONE", "acceptance_authority": "HUMAN"}
+}

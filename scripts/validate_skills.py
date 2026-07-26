@@ -49,6 +49,15 @@ SKILLS = {
             "implementation-handoff.md",
         },
     },
+    "review-law": {
+        "description_boundary": "Do not use to create or repair law",
+        "references": {
+            "review-gates.md",
+            "evidence-audit.md",
+            "minimality-and-overlap.md",
+            "verdict-contract.md",
+        },
+    },
 }
 
 JSON_MANIFESTS = [
@@ -229,6 +238,15 @@ def main() -> int:
         fail(
             failures,
             f"expected at least 12 activation scenarios, found {activation_scenario_count}",
+        )
+
+    review_scenario_count = len(
+        list((ROOT / "tests" / "review-scenarios").glob("*.json"))
+    )
+    if review_scenario_count < 15:
+        fail(
+            failures,
+            f"expected at least 15 review scenarios, found {review_scenario_count}",
         )
 
     if failures:
