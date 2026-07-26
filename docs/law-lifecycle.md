@@ -18,9 +18,13 @@ VerifiedCandidate
     | human review only
     v
 AcceptedLaw ---- deterministic projection ----> GeneratedContext
-    |                                         |
-    | evaluate future code                    | conditions agent work
-    +--------------------> Reaction <---------+
+    |                                               |
+    |                                      task-local activation
+    |                                               v
+    |                                           AgentChange
+    |                                               |
+    | evaluate future code                          |
+    +--------------------> Reaction <---------------+
                               |
                     +---------+----------+
                     |                    |
@@ -50,7 +54,9 @@ at `VerifiedCandidate`; human review performs the authority transition.
 ## Operation
 
 Tianheng deterministically projects accepted Rust law into agent-readable context and evaluates the
-workspace. Skills should consume those reactions, not wrap or imitate them.
+workspace. `activate-law` selects relevant projected boundaries into task-local context without
+rewriting them; activation is orientation, and the later Tianheng reaction remains binding. Skills
+consume projection and reaction rather than wrapping or imitating either.
 
 ## Evolution
 

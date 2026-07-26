@@ -1,6 +1,6 @@
 {
   "name": "tianheng-foundry",
-  "version": "0.1.0+codex.20260726172917",
+  "version": "0.1.0+codex.20260726180418",
   "description": "Portable companion skills that forge project-declared Rust architecture constraints into tested Tianheng law candidates.",
   "author": {
     "name": "tacticaldoll",
@@ -30,6 +30,6 @@
       "Interactive"
     ],
     "websiteURL": "https://github.com/tacticaldoll/tianheng-foundry",
-    "defaultPrompt": "Use the appropriate Tianheng Foundry skill to forge declared Rust architecture into reacting law, repair product drift, or prepare an explicit amendment."
+    "defaultPrompt": "Use the appropriate Tianheng Foundry skill to forge law, activate task-local context, repair product drift, or prepare an explicit amendment."
   }
 }

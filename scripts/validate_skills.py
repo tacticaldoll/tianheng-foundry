@@ -40,6 +40,15 @@ SKILLS = {
             "migration-and-projection.md",
         },
     },
+    "activate-law": {
+        "description_boundary": "Do not use for non-Rust repositories",
+        "references": {
+            "projection-source.md",
+            "task-envelope.md",
+            "relevance-routing.md",
+            "implementation-handoff.md",
+        },
+    },
 }
 
 JSON_MANIFESTS = [
@@ -211,6 +220,15 @@ def main() -> int:
         fail(
             failures,
             f"expected at least 9 amendment scenarios, found {amendment_scenario_count}",
+        )
+
+    activation_scenario_count = len(
+        list((ROOT / "tests" / "activation-scenarios").glob("*.json"))
+    )
+    if activation_scenario_count < 12:
+        fail(
+            failures,
+            f"expected at least 12 activation scenarios, found {activation_scenario_count}",
         )
 
     if failures:

@@ -1,0 +1,10 @@
+{
+  "id": "projection-error",
+  "repository": {"rust": true, "tianheng": true, "projection_ok": false},
+  "request": {
+    "route": "implementation",
+    "touch_set_known": true,
+    "impacts": {"direct": true, "dependency": false, "semantic": false, "runtime": false, "workspace": false}
+  },
+  "expected": {"verdict": "STOP_PROJECTION_ERROR", "selected_tiers": [], "write_workspace": false}
+}

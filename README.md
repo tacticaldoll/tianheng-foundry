@@ -47,6 +47,18 @@ constraints Tianheng cannot observe.
 
 Invoke it explicitly as `$forge-law`, or let a compatible host select it from its description.
 
+### `activate-law`
+
+Use before inspecting or changing code in an already governed Rust workspace. The skill reads the
+adopter's canonical law projection, forms a change envelope, and selects direct and adjacent
+dependency, semantic, runtime, and workspace boundaries into task-local context.
+
+It is read-only. Uncovered effects remain visible without becoming invented policy, and the
+post-change Tianheng reaction remains the binding verification.
+
+Invoke it explicitly as `$activate-law`, or let a compatible host select it before governed Rust
+work begins.
+
 ### `repair-drift`
 
 Use after an accepted Tianheng boundary reacts to Rust product code. The skill reads the structured
@@ -89,10 +101,11 @@ amendment request.
 ## Repository
 
 ```text
-skills/forge-law/          skill entrypoint and focused references
+skills/*/                  skill entrypoints and focused references
 tests/scenarios/           authority and eligibility policy cases
 tests/repair-scenarios/    reaction routing and law-protection cases
 tests/amendment-scenarios/ amendment authority and proof-direction cases
+tests/activation-scenarios/ task-local law selection and routing cases
 tests/compatibility/       representative Tianheng consumer fixture
 scripts/                   network-free validation entrypoints
 docs/                      identity, lifecycle, packaging, and compatibility
@@ -123,6 +136,7 @@ python3 scripts/validate_skills.py
 python3 scripts/test_scenarios.py
 python3 scripts/test_repair_scenarios.py
 python3 scripts/test_amendment_scenarios.py
+python3 scripts/test_activation_scenarios.py
 python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-creator/scripts/quick_validate.py" \
   skills/forge-law
 python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/plugin-creator/scripts/validate_plugin.py" .
@@ -140,8 +154,9 @@ after the selected Tianheng checkout has its dependencies available.
 
 ## Status
 
-Experimental. The collection currently contains `forge-law`, `repair-drift`, and `amend-law`. The
-initial supported Tianheng line is `>=0.3.0,<0.4.0`, with `0.3.0` as the checked representative.
+Experimental. The collection currently contains `forge-law`, `activate-law`, `repair-drift`, and
+`amend-law`. The initial supported Tianheng line is `>=0.3.0,<0.4.0`, with `0.3.0` as the checked
+representative.
 
 ## License
 

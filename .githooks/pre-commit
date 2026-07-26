@@ -5,3 +5,4 @@ python3 scripts/validate_skills.py
 python3 scripts/test_scenarios.py
 python3 scripts/test_repair_scenarios.py
 python3 scripts/test_amendment_scenarios.py
+python3 scripts/test_activation_scenarios.py

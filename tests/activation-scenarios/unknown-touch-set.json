@@ -1,0 +1,10 @@
+{
+  "id": "unknown-touch-set",
+  "repository": {"rust": true, "tianheng": true, "projection_ok": true},
+  "request": {
+    "route": "implementation",
+    "touch_set_known": false,
+    "impacts": {"direct": false, "dependency": false, "semantic": false, "runtime": false, "workspace": false}
+  },
+  "expected": {"verdict": "CLARIFY_TOUCH_SET", "selected_tiers": [], "write_workspace": false}
+}
