@@ -1,0 +1,22 @@
+{
+  "id": "accepted-law-amendment-refusal",
+  "repository": {
+    "rust": true,
+    "tianheng_version": "0.3.0",
+    "mixed_language": false
+  },
+  "request": {
+    "explicit_adoption": false,
+    "claim_authority": "accepted-law",
+    "claim_class": "structural",
+    "observable": true,
+    "accepted_law_change": true,
+    "explicit_amendment": false
+  },
+  "expected": {
+    "verdict": "STOP_AMENDMENT_REQUIRED",
+    "write_candidate": false,
+    "scope": "cargo-workspace",
+    "authority": "AcceptedLaw"
+  }
+}

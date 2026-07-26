@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "tianheng": {
+    "supported": ">=0.3.0,<0.4.0",
+    "tested": [
+      "0.3.0"
+    ],
+    "source_env": "TIANHENG_SOURCE"
+  },
+  "crate_family": [
+    "xuanji",
+    "xingbiao",
+    "guibiao",
+    "hunyi",
+    "louke",
+    "tianheng"
+  ],
+  "recipe_vocabulary": [
+    "Constitution",
+    "CrateBoundary",
+    "ModuleBoundary",
+    "SemanticBoundary",
+    "DynTraitBoundary",
+    "TraitImplBoundary",
+    "VisibilityBoundary",
+    "ForbiddenMarkerBoundary",
+    "UnsafeBoundary",
+    "AsyncExposureBoundary",
+    "RuntimeBoundary",
+    "SansIoPure",
+    "ScanDepth"
+  ]
+}

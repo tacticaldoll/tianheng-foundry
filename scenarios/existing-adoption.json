@@ -1,0 +1,22 @@
+{
+  "id": "existing-adoption",
+  "repository": {
+    "rust": true,
+    "tianheng_version": "0.3.0",
+    "mixed_language": false
+  },
+  "request": {
+    "explicit_adoption": false,
+    "claim_authority": "project-prose",
+    "claim_class": "structural",
+    "observable": true,
+    "accepted_law_change": false,
+    "explicit_amendment": false
+  },
+  "expected": {
+    "verdict": "ADMIT",
+    "write_candidate": true,
+    "scope": "cargo-workspace",
+    "authority": "VerifiedCandidate"
+  }
+}

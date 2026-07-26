@@ -1,0 +1,35 @@
+{
+  "name": "tianheng-foundry",
+  "version": "0.1.0",
+  "description": "Portable companion skills that forge project-declared Rust architecture constraints into tested Tianheng law candidates.",
+  "author": {
+    "name": "tacticaldoll",
+    "url": "https://github.com/tacticaldoll"
+  },
+  "homepage": "https://github.com/tacticaldoll/tianheng-foundry",
+  "repository": "https://github.com/tacticaldoll/tianheng-foundry",
+  "license": "MIT",
+  "keywords": [
+    "rust",
+    "tianheng",
+    "architecture",
+    "governance",
+    "skills"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Tianheng Foundry",
+    "shortDescription": "Forge Rust architecture prose into tested Tianheng law.",
+    "longDescription": "Tianheng Foundry is a portable companion skill collection for Rust adopters. It admits only project-declared, Tianheng-observable constraints, writes candidate law, proves the reaction in both directions, and preserves human authority.",
+    "developerName": "tacticaldoll",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Read",
+      "Write",
+      "Shell",
+      "Interactive"
+    ],
+    "websiteURL": "https://github.com/tacticaldoll/tianheng-foundry",
+    "defaultPrompt": "Use the forge-law skill to replace this declared Rust architecture constraint with a tested Tianheng law candidate."
+  }
+}

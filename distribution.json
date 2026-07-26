@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "name": "tianheng-foundry",
+  "display_name": "Tianheng Foundry",
+  "description": "Portable companion skills that turn declared Rust architecture prose into tested Tianheng reactions.",
+  "version": "0.1.0",
+  "repository": "https://github.com/tacticaldoll/tianheng-foundry",
+  "skills_directory": "skills"
+}

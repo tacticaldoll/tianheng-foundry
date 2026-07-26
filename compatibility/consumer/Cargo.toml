@@ -1,0 +1,10 @@
+[package]
+name = "tianheng-foundry-compatibility"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[workspace]
+
+[dependencies]
+tianheng = "=0.3.0"

@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+python3 scripts/validate_repository.py
+python3 scripts/run_scenarios.py
+openspec validate --all

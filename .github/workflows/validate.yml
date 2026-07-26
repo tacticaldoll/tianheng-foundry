@@ -1,0 +1,42 @@
+name: validate
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  repository:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Install OpenSpec
+        run: npm install --global @fission-ai/openspec@1.4.1
+      - name: Validate distribution and scenarios
+        run: |
+          python3 scripts/validate_repository.py
+          python3 scripts/run_scenarios.py
+          openspec validate --all
+
+  tianheng-compatibility:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: tacticaldoll/tianheng
+          ref: v0.3.0
+          path: _tianheng
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Fetch Rust dependencies
+        working-directory: _tianheng
+        run: cargo fetch --locked
+      - name: Compile representative declarations
+        env:
+          TIANHENG_SOURCE: ${{ github.workspace }}/_tianheng
+        run: python3 scripts/check_compatibility.py

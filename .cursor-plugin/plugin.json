@@ -1,0 +1,19 @@
+{
+  "name": "tianheng-foundry",
+  "displayName": "Tianheng Foundry",
+  "description": "Companion skills that forge declared Rust architecture prose into tested Tianheng law candidates.",
+  "version": "0.1.0",
+  "author": {
+    "name": "tacticaldoll"
+  },
+  "homepage": "https://github.com/tacticaldoll/tianheng-foundry",
+  "repository": "https://github.com/tacticaldoll/tianheng-foundry",
+  "license": "MIT",
+  "keywords": [
+    "rust",
+    "tianheng",
+    "architecture",
+    "skills"
+  ],
+  "skills": "./skills/"
+}
