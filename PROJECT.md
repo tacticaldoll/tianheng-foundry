@@ -5,12 +5,13 @@ to adopt, Tianheng in their own Rust projects.
 
 ## Status
 
-Experimental `0.1.x`. The collection currently has six skills: `forge-law` forms a
+Experimental `0.1.x`. The collection currently has seven skills: `forge-law` forms a
 reaction-proven candidate from declared prose, `activate-law` selects accepted law into task-local
 context, `repair-drift` restores product code after accepted law reacts, and `amend-law` prepares
 an explicitly authorized change to accepted law. `review-law` adversarially checks candidates
 before human acceptance; `shape-capability` turns demonstrated observation gaps into bounded
-upstream pressure. All support Tianheng `>=0.3.0,<0.4.0`.
+upstream pressure; `manage-baseline` governs accepted-current drift as a separate ratchet. All
+support Tianheng `>=0.3.0,<0.4.0`.
 
 ## Standing Decisions
 
@@ -38,6 +39,8 @@ upstream pressure. All support Tianheng `>=0.3.0,<0.4.0`.
   candidate; only a human or steward promotes verified code to accepted law.
 - **Pressure is not pretend law.** A missing observation becomes a source-, identity-, perimeter-,
   and fixture-backed upstream candidate, never a no-op boundary in the adopter.
+- **Baseline is debt, not law.** Baseline operations compare structured identities and require
+  separate authority; they never alter the Constitution or make observed violations clean.
 - **Tianheng owns reaction.** Tianheng owns its DSL, observations, projections, evaluator, and
   complete cookbook. Foundry carries only selection and adaptation knowledge.
 - **Repository independence.** Tianheng, Fornax, and Foundry release independently. Compatibility

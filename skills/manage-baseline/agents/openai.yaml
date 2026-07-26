@@ -1,0 +1,6 @@
+interface:
+  display_name: "Manage Tianheng Baseline"
+  short_description: "Ratchet known drift without absorbing new violations"
+  default_prompt: "Use $manage-baseline to adopt, refresh, prune, or retire this Tianheng baseline without weakening accepted law."
+policy:
+  allow_implicit_invocation: true

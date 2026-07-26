@@ -114,6 +114,7 @@ python3 scripts/test_amendment_scenarios.py
 python3 scripts/test_activation_scenarios.py
 python3 scripts/test_review_scenarios.py
 python3 scripts/test_capability_scenarios.py
+python3 scripts/test_baseline_scenarios.py
 python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-creator/scripts/quick_validate.py" \
   skills/forge-law
 python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/plugin-creator/scripts/validate_plugin.py" .
@@ -137,6 +138,7 @@ with an available YAML parser.
 - Does activation select by observable task impact while leaving projection and code untouched?
 - Does review preserve independence, lead with findings, and leave acceptance human-owned?
 - Does capability pressure name a real source and honest perimeter without pre-creating upstream API?
+- Does baseline work diff structured identities and refuse unauthorized acquisition?
 
 ## Git And Repository Hygiene
 

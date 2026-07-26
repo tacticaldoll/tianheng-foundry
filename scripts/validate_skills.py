@@ -67,6 +67,15 @@ SKILLS = {
             "upstream-handoff.md",
         },
     },
+    "manage-baseline": {
+        "description_boundary": "Do not use to repair product drift",
+        "references": {
+            "baseline-contract.md",
+            "identity-diff.md",
+            "operation-modes.md",
+            "verification.md",
+        },
+    },
 }
 
 JSON_MANIFESTS = [
@@ -265,6 +274,15 @@ def main() -> int:
         fail(
             failures,
             f"expected at least 12 capability scenarios, found {capability_scenario_count}",
+        )
+
+    baseline_scenario_count = len(
+        list((ROOT / "tests" / "baseline-scenarios").glob("*.json"))
+    )
+    if baseline_scenario_count < 15:
+        fail(
+            failures,
+            f"expected at least 15 baseline scenarios, found {baseline_scenario_count}",
         )
 
     if failures:

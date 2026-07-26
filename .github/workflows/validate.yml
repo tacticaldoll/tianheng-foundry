@@ -21,6 +21,7 @@ jobs:
           python3 scripts/test_activation_scenarios.py
           python3 scripts/test_review_scenarios.py
           python3 scripts/test_capability_scenarios.py
+          python3 scripts/test_baseline_scenarios.py
 
   tianheng-compatibility:
     runs-on: ubuntu-latest

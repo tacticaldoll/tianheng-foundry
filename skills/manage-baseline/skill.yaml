@@ -1,0 +1,18 @@
+name: manage-baseline
+version: 0.1.0
+status: draft
+family: implementation
+description: Use to manage Tianheng structured baselines as an authorized drift ratchet.
+triggers:
+  - user explicitly asks to adopt current Tianheng violations as a baseline
+  - gate mode reports stale baseline entries that should be pruned
+  - user explicitly asks to refresh, annotate, or retire a Tianheng baseline
+entrypoint: SKILL.md
+resources:
+  references: references/
+compatibility:
+  - openai-codex
+  - claude
+  - cursor
+  - gemini
+  - generic-llm-agent

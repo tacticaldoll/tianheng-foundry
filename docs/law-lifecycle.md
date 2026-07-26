@@ -80,6 +80,26 @@ capability, not a pretend boundary. `shape-capability` may turn that pressure in
 `UpstreamCandidate`, but the adopter claim remains prose until Tianheng accepts and implements a
 real observation.
 
+## Baseline Debt
+
+Baseline is a parallel gate-state lifecycle, not an authority state of law:
+
+```text
+ObservedDrift
+    |
+    | explicit debt adoption
+    v
+BaselinedDebt -- product repair --> StaleEntry -- rewrite --> PrunedDebt
+    |                                                   |
+    +---------------- all debt repaired ----------------+
+                                                        v
+                                                     Retired
+```
+
+`manage-baseline` compares structured identity sets before every write. Added identities require
+new debt authority; stale identities may be pruned; retirement requires no current enforce debt.
+Throughout the lifecycle, accepted law and observation remain unchanged.
+
 ## Prose Disposition
 
 Prose may be removed or narrowed only after its complete enforceable meaning exists in accepted

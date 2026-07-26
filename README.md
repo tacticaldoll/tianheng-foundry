@@ -107,6 +107,17 @@ implementing Tianheng.
 Invoke it explicitly as `$shape-capability`, or let a compatible host select it from a reported
 capability-pressure stop.
 
+### `manage-baseline`
+
+Use for an explicitly authorized baseline adoption, refresh, stale prune, annotation update, or
+retirement. The skill compares structured `(target, rule_key, fact)` identities before every write
+and refuses to absorb newly observed drift without separate authority.
+
+It treats a baseline as accepted-current debt that changes gate outcome, not as law or cleanliness.
+
+Invoke it explicitly as `$manage-baseline`, or let a compatible host select it from a baseline or
+stale-entry request.
+
 ## Design
 
 - **Declared intent only.** Existing project prose or direct human instruction supplies authority.
@@ -131,6 +142,7 @@ tests/amendment-scenarios/ amendment authority and proof-direction cases
 tests/activation-scenarios/ task-local law selection and routing cases
 tests/review-scenarios/     adversarial acceptance-gate cases
 tests/capability-scenarios/  observation-gap classification and ownership cases
+tests/baseline-scenarios/    debt-ratchet authority and identity-diff cases
 tests/compatibility/       representative Tianheng consumer fixture
 scripts/                   network-free validation entrypoints
 docs/                      identity, lifecycle, packaging, and compatibility
@@ -164,6 +176,7 @@ python3 scripts/test_amendment_scenarios.py
 python3 scripts/test_activation_scenarios.py
 python3 scripts/test_review_scenarios.py
 python3 scripts/test_capability_scenarios.py
+python3 scripts/test_baseline_scenarios.py
 python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-creator/scripts/quick_validate.py" \
   skills/forge-law
 python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/plugin-creator/scripts/validate_plugin.py" .
@@ -182,8 +195,8 @@ after the selected Tianheng checkout has its dependencies available.
 ## Status
 
 Experimental. The collection currently contains `forge-law`, `activate-law`, `repair-drift`,
-`amend-law`, `review-law`, and `shape-capability`. The initial supported Tianheng line is
-`>=0.3.0,<0.4.0`, with `0.3.0` as the checked representative.
+`amend-law`, `review-law`, `shape-capability`, and `manage-baseline`. The initial supported Tianheng
+line is `>=0.3.0,<0.4.0`, with `0.3.0` as the checked representative.
 
 ## License
 
