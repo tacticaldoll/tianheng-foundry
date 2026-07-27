@@ -124,6 +124,9 @@ TIANHENG_SOURCE=/path/to/tianheng python3 scripts/check_tianheng_compatibility.p
 Also run `bash -n .githooks/pre-commit` after changing the hook and parse every edited YAML file
 with an available YAML parser.
 
+Run `git config core.hooksPath .githooks` once per clone so the hook actually runs before each
+commit; git does not enable a repository's hook directory by default.
+
 ## Review Checklist
 
 - Does the description trigger only for the intended Rust and Tianheng context?

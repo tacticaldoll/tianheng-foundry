@@ -182,6 +182,16 @@ python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-creator/scripts/quick_
 python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/plugin-creator/scripts/validate_plugin.py" .
 ```
 
+`.githooks/pre-commit` runs the network-free part of that gate (the first eight commands)
+automatically before every commit, but git does not wire a repository's own hook directory in by
+default. Enable it once per clone:
+
+```bash
+git config core.hooksPath .githooks
+```
+
+Without that step the hook file is inert and only CI catches a violation, after push.
+
 To compile representative generated vocabulary against a local Tianheng checkout:
 
 ```bash
