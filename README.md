@@ -146,6 +146,7 @@ tests/baseline-scenarios/    debt-ratchet authority and identity-diff cases
 tests/compatibility/       representative Tianheng consumer fixture
 scripts/                   network-free validation entrypoints
 docs/                      identity, lifecycle, packaging, and compatibility
+tools/th-foundry-cli/      local multi-host deploy CLI (th-foundry)
 ```
 
 `PROJECT.md` records standing decisions and non-goals. `AGENTS.md` is the authoring contract for
@@ -163,6 +164,19 @@ codex plugin add tianheng-foundry@tianheng-foundry
 Start a new Codex thread after installing or refreshing the plugin so skill discovery uses the new
 version. Claude, Cursor, Gemini, and generic agent distributions use the host manifests already
 checked into the repository; see `docs/host-packaging.md`.
+
+To deploy across every local agent host in one step (Claude, Codex, Antigravity, Gemini CLI,
+Copilot CLI, Cline, Cursor, OpenCode — whichever are installed on the machine), use the
+[`th-foundry` CLI](tools/th-foundry-cli/):
+
+```bash
+uv tool install ./tools/th-foundry-cli
+th-foundry deploy --all
+```
+
+Unlike Fornax's own CLI, `th-foundry` deploys from the local checkout rather than a tagged release
+— this project has not cut one yet. See [`tools/th-foundry-cli/README.md`](tools/th-foundry-cli/README.md)
+for the distinction and the plain `hosts`/`status`/`doctor` commands.
 
 ## Validate
 
