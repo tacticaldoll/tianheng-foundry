@@ -192,6 +192,9 @@ TIANHENG_SOURCE=/path/to/tianheng \
 All repository and scenario checks are network-free. The compatibility runner uses Cargo offline
 after the selected Tianheng checkout has its dependencies available.
 
+`distribution.json`'s `version` field is the single release-version source. Every other manifest
+and `scripts/validate_skills.py` check against it; bump it there and nowhere else.
+
 ## Status
 
 Experimental. The collection currently contains `forge-law`, `activate-law`, `repair-drift`,

@@ -11,7 +11,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 NAME = "tianheng-foundry"
-VERSION = "0.1.0"
+VERSION = json.loads((ROOT / "distribution.json").read_text())["version"]
 SKILLS = {
     "forge-law": {
         "description_boundary": "Do not use for non-Rust repositories",
