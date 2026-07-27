@@ -216,6 +216,44 @@ def main() -> int:
                 if required not in text:
                     fail(failures, f"{skill_name}/skill.yaml missing {required!r}")
 
+            status_match = re.search(r"(?m)^status: (\S+)$", text)
+            if not status_match or status_match.group(1) not in {
+                "draft",
+                "stable",
+                "deprecated",
+            }:
+                fail(
+                    failures,
+                    f"{skill_name}/skill.yaml missing a valid 'status' "
+                    "(draft|stable|deprecated)",
+                )
+
+            family_match = re.search(r"(?m)^family: (\S+)$", text)
+            if not family_match or family_match.group(1) not in {
+                "implementation",
+                "analysis",
+            }:
+                fail(
+                    failures,
+                    f"{skill_name}/skill.yaml missing a valid 'family' "
+                    "(implementation|analysis)",
+                )
+
+            description_match = re.search(r"(?m)^description: (.+)$", text)
+            if not description_match or not description_match.group(1).strip():
+                fail(
+                    failures,
+                    f"{skill_name}/skill.yaml missing a non-empty 'description'",
+                )
+
+            triggers_match = re.search(r"(?ms)^triggers:\n((?:  - .+\n)+)", text)
+            if not triggers_match:
+                fail(
+                    failures,
+                    f"{skill_name}/skill.yaml missing a 'triggers' list with at "
+                    "least one item",
+                )
+
     if (ROOT / ".gitmodules").exists():
         fail(failures, "git submodules are forbidden")
 
