@@ -15,14 +15,14 @@ Architecture guidance drifts when it exists only as prose. Tianheng makes observ
 react in code; Foundry supplies the guarded reasoning needed to cross from declared prose to that
 reaction:
 
-```text
-declared claim
-  -> observable intent
-  -> boundary candidate
-  -> violating and clean proofs
-  -> human acceptance
-  -> generated context
-  -> reaction during future work
+```mermaid
+flowchart LR
+    claim["declared claim"] --> intent["observable intent"]
+    intent --> candidate["boundary candidate"]
+    candidate --> proofs["violating and clean proofs"]
+    proofs --> acceptance["human acceptance"]
+    acceptance --> context["generated context"]
+    context --> reaction["reaction during future work"]
 ```
 
 The generated code is never accepted merely because an agent wrote it or a test passed. Human
