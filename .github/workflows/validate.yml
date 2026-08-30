@@ -23,6 +23,23 @@ jobs:
           python3 scripts/test_capability_scenarios.py
           python3 scripts/test_baseline_scenarios.py
 
+  cli:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: tacticaldoll/agent-skill-deployer
+          ref: v0.1.2
+          path: _deployer
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run the CLI binding against its pinned engine
+        run: |
+          PYTHONPATH=_deployer:tools/th-foundry-cli \
+            python3 -m unittest discover -s tools/th-foundry-cli/tests -v
+
   tianheng-compatibility:
     runs-on: ubuntu-latest
     steps:
