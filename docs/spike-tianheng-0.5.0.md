@@ -131,9 +131,11 @@ exists to make — *can Tianheng observe this claim, and whose gap is it if not*
 footing for the first time. That judgement is currently a hand-maintained table which this spike
 measured as materially incomplete.
 
-## Deferred, deliberately
+## Deferred at the time, since decided
 
-Whether an adopter may **own** an observation is a standing decision, not a version bump.
+Whether an adopter may **own** an observation is a standing decision, not a version bump. It was
+left open here and taken separately, on the evidence below: `PROJECT.md` now names two owners for a
+missing observation, and `shape-capability` routes by which one it is.
 `PROJECT.md` says a missing observation becomes upstream pressure, "never a no-op boundary in the
 adopter". That was a true statement about 0.3.0, where no third path existed. In 0.5.0 one does,
 and `Owner::Adopter` is upstream's own vocabulary for it.

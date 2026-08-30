@@ -1,5 +1,5 @@
 {
-  "id": "non-structural-claim",
+  "id": "adopter-rule-without-source",
   "repository": {
     "rust": true,
     "tianheng_or_adoption": true,
@@ -8,14 +8,14 @@
   },
   "claim": {
     "authority": true,
-    "structural": false,
+    "structural": true,
     "existing_recipe": false,
     "observation_source": null,
     "feasible": false,
-    "general_capability": true
+    "general_capability": false
   },
   "expected": {
-    "verdict": "DOCUMENT_ONLY",
+    "verdict": "DEFER_OBSERVATION",
     "pressure_candidate": false,
     "observation_owner": "none",
     "write_upstream": false

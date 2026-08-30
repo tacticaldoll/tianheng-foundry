@@ -64,7 +64,7 @@ SKILLS = {
             "gap-classification.md",
             "observation-contract.md",
             "feasibility-and-risk.md",
-            "upstream-handoff.md",
+            "candidate-handoff.md",
         },
     },
     "manage-baseline": {
@@ -347,10 +347,10 @@ def main() -> int:
     capability_scenario_count = len(
         list((ROOT / "tests" / "capability-scenarios").glob("*.json"))
     )
-    if capability_scenario_count < 12:
+    if capability_scenario_count < 14:
         fail(
             failures,
-            f"expected at least 12 capability scenarios, found {capability_scenario_count}",
+            f"expected at least 14 capability scenarios, found {capability_scenario_count}",
         )
 
     baseline_scenario_count = len(

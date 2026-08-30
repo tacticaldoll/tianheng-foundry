@@ -1,8 +1,8 @@
 name: shape-capability
-version: 0.1.1
+version: 0.1.2
 status: draft
 family: analysis
-description: Use to turn a demonstrated Tianheng observation gap into bounded upstream capability pressure.
+description: Use to turn a demonstrated Tianheng observation gap into a bounded observation contract with a named upstream or adopter owner.
 triggers:
   - forge-law cannot map an authorized structural claim to a Tianheng observation
   - amend-law cannot express an explicit law delta with the supported Tianheng surface

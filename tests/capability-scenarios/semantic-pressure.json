@@ -1,6 +1,23 @@
 {
   "id": "semantic-pressure",
-  "repository": {"rust": true, "tianheng_or_adoption": true, "supported_version": true, "cross_language": false},
-  "claim": {"authority": true, "structural": true, "existing_recipe": false, "observation_source": "syn_ast", "feasible": true},
-  "expected": {"verdict": "SHAPE_CAPABILITY", "pressure_candidate": true, "observation_owner": "semantic", "write_upstream": false}
+  "repository": {
+    "rust": true,
+    "tianheng_or_adoption": true,
+    "supported_version": true,
+    "cross_language": false
+  },
+  "claim": {
+    "authority": true,
+    "structural": true,
+    "existing_recipe": false,
+    "observation_source": "syn_ast",
+    "feasible": true,
+    "general_capability": true
+  },
+  "expected": {
+    "verdict": "SHAPE_CAPABILITY",
+    "pressure_candidate": true,
+    "observation_owner": "semantic",
+    "write_upstream": false
+  }
 }

@@ -23,6 +23,8 @@ REQUIRED_IDS = {
     "static-pressure",
     "semantic-pressure",
     "runtime-pressure",
+    "adopter-house-rule",
+    "adopter-rule-without-source",
 }
 DIMENSIONS = {
     "cargo_metadata": "static",
@@ -67,6 +69,12 @@ def evaluate(case: dict) -> dict:
         return result("DEFER_FEASIBILITY")
     if source not in DIMENSIONS:
         return result("DEFER_OBSERVATION")
+
+    # The fork sits *after* the source and feasibility gates, never beside them: an
+    # adopter-owned observation is differently owned, not more cheaply earned. A house rule
+    # with no named source defers exactly as a general capability with none does.
+    if not claim["general_capability"]:
+        return result("ADOPTER_OBSERVER", True, "adopter")
 
     return result("SHAPE_CAPABILITY", True, DIMENSIONS[source])
 

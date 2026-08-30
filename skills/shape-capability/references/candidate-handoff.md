@@ -1,6 +1,9 @@
-# Upstream Handoff
+# Candidate Handoff
 
-Foundry carries adopter evidence; Tianheng owns observation capabilities and public API.
+Foundry carries adopter evidence and shapes a contract. It implements neither owner's observation.
+
+Tianheng owns its dimensions' capabilities and public API. From `0.5.0` an adopter owns any
+observation they implement as an `Observer` and compose into their own run.
 
 ## Default Handoff
 
@@ -15,6 +18,20 @@ Produce a self-contained pressure report containing:
 - compatibility/public-surface implications.
 
 Do not open an issue or edit another repository by default.
+
+## Handing An Adopter-Owned Observation Back
+
+Report, and stop there:
+
+- the observation contract, including the perimeter the participant reads;
+- the bounds the participant must declare — every shape it will not see, in the direction
+  `Observer::bounds()` requires, since it has no default body;
+- the fixture matrix, one violating and one clean adjacent case;
+- where in the adopter's run the participant composes, and what its outcome merges with.
+
+Writing the `Observer` is not capability shaping and is not performed here. An adopter-owned
+observation is still a candidate: it becomes accepted law by the same human transition as any other
+reaction, never by having been written.
 
 ## Persisting In A Tianheng Checkout
 

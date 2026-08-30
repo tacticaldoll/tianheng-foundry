@@ -9,8 +9,8 @@ Experimental `0.1.x`. The collection currently has seven skills: `forge-law` for
 reaction-proven candidate from declared prose, `activate-law` selects accepted law into task-local
 context, `repair-drift` restores product code after accepted law reacts, and `amend-law` prepares
 an explicitly authorized change to accepted law. `review-law` adversarially checks candidates
-before human acceptance; `shape-capability` turns demonstrated observation gaps into bounded
-upstream pressure; `manage-baseline` governs accepted-current drift as a separate ratchet. All
+before human acceptance; `shape-capability` turns demonstrated observation gaps into a bounded
+observation contract with a named owner; `manage-baseline` governs accepted-current drift as a separate ratchet. All
 support Tianheng `>=0.5.0,<0.6.0`.
 
 ## Standing Decisions
@@ -38,7 +38,12 @@ support Tianheng `>=0.5.0,<0.6.0`.
 - **Review blocks but does not accept.** Adversarial review may reject or require revision of a
   candidate; only a human or steward promotes verified code to accepted law.
 - **Pressure is not pretend law.** A missing observation becomes a source-, identity-, perimeter-,
-  and fixture-backed upstream candidate, never a no-op boundary in the adopter.
+  and fixture-backed candidate, never a no-op boundary in the adopter. From Tianheng `0.5.0` that
+  candidate has two owners. A general capability a dimension should hold is upstream's. An
+  adopter's own house rule is theirs: they may implement an `Observer` and compose it into the run.
+  An adopter-owned observer is not the pretend boundary this decision forbids — the protocol
+  refuses a participant that will not declare its own bounds — and it earns no relaxed gate. The
+  same named source, feasibility evidence, and both proofs are required either way.
 - **Baseline is debt, not law.** Baseline operations compare structured identities and require
   separate authority; they never alter the Constitution or make observed violations clean.
 - **Tianheng owns reaction.** Tianheng owns its DSL, observations, projections, evaluator, and

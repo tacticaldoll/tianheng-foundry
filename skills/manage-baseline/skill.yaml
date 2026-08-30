@@ -1,5 +1,5 @@
 name: manage-baseline
-version: 0.1.1
+version: 0.1.2
 status: draft
 family: implementation
 description: Use to manage Tianheng structured baselines as an authorized drift ratchet.

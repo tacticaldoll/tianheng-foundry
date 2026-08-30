@@ -1,6 +1,23 @@
 {
   "id": "existing-recipe",
-  "repository": {"rust": true, "tianheng_or_adoption": true, "supported_version": true, "cross_language": false},
-  "claim": {"authority": true, "structural": true, "existing_recipe": true, "observation_source": "cargo_metadata", "feasible": true},
-  "expected": {"verdict": "ROUTE_FORGE", "pressure_candidate": false, "observation_owner": "none", "write_upstream": false}
+  "repository": {
+    "rust": true,
+    "tianheng_or_adoption": true,
+    "supported_version": true,
+    "cross_language": false
+  },
+  "claim": {
+    "authority": true,
+    "structural": true,
+    "existing_recipe": true,
+    "observation_source": "cargo_metadata",
+    "feasible": true,
+    "general_capability": true
+  },
+  "expected": {
+    "verdict": "ROUTE_FORGE",
+    "pressure_candidate": false,
+    "observation_owner": "none",
+    "write_upstream": false
+  }
 }

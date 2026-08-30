@@ -1,5 +1,5 @@
 {
-  "id": "non-structural-claim",
+  "id": "adopter-house-rule",
   "repository": {
     "rust": true,
     "tianheng_or_adoption": true,
@@ -8,16 +8,16 @@
   },
   "claim": {
     "authority": true,
-    "structural": false,
+    "structural": true,
     "existing_recipe": false,
-    "observation_source": null,
-    "feasible": false,
-    "general_capability": true
+    "observation_source": "source_tokens",
+    "feasible": true,
+    "general_capability": false
   },
   "expected": {
-    "verdict": "DOCUMENT_ONLY",
-    "pressure_candidate": false,
-    "observation_owner": "none",
+    "verdict": "ADOPTER_OBSERVER",
+    "pressure_candidate": true,
+    "observation_owner": "adopter",
     "write_upstream": false
   }
 }

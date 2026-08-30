@@ -1,12 +1,12 @@
 ---
 name: shape-capability
-description: Use when a project-authorized structural Rust architecture claim cannot be expressed by the supported Tianheng observation surface, or when forge-law, amend-law, or review-law reports capability pressure; verifies that the gap is real, designs a bounded observation and reaction contract with feasibility evidence, and produces an upstream-ready capability pressure without writing pretend adopter law. Do not use when an existing recipe fits, the claim is non-structural or cross-language, compatibility is merely unknown, the user asks to implement Tianheng itself, or no concrete observation source exists.
+description: Use when a project-authorized structural Rust architecture claim cannot be expressed by the supported Tianheng observation surface, or when forge-law, amend-law, or review-law reports capability pressure; verifies that the gap is real, designs a bounded observation and reaction contract with feasibility evidence, and names its owner — upstream when the missing observation is a general capability, the adopter when the claim is their own house rule — without writing pretend adopter law. Do not use when an existing recipe fits, the claim is non-structural or cross-language, compatibility is merely unknown, the user asks to implement Tianheng itself, or no concrete observation source exists.
 ---
 
 # Shape Tianheng Capability
 
-Turn a demonstrated observation gap into a bounded upstream capability candidate. Preserve the
-adopter's intent as evidence; do not grant the missing reaction imaginary teeth.
+Turn a demonstrated observation gap into a bounded observation contract with a named owner.
+Preserve the adopter's intent as evidence; do not grant the missing reaction imaginary teeth.
 
 ## Load References Deliberately
 
@@ -15,7 +15,7 @@ adopter's intent as evidence; do not grant the missing reaction imaginary teeth.
   reaction.
 - Read [feasibility-and-risk.md](references/feasibility-and-risk.md) before recommending upstream
   work.
-- Read [upstream-handoff.md](references/upstream-handoff.md) before persisting or routing the
+- Read [candidate-handoff.md](references/candidate-handoff.md) before persisting or routing the
   candidate.
 
 These references target Tianheng `0.5.x`. Inspect the adopter's resolved version and Tianheng's
@@ -57,6 +57,17 @@ Classify:
 
 Do not name a new boundary merely because no remembered recipe comes to mind.
 
+On `TRUE_GAP`, name the owner before shaping anything, using the ownership test in
+`gap-classification.md`:
+
+- `UPSTREAM`: the missing observation is a general capability a Tianheng dimension should hold;
+- `ADOPTER`: the claim is this project's own house rule, which an `Observer` outside the family can
+  observe from Tianheng `0.5.0` onward.
+
+Ownership decides the handoff and nothing else. Both routes need the same named source, the same
+feasibility evidence, and the same fixture matrix. A house rule with no observation source defers
+exactly as a general capability with none does.
+
 ## Phase 2: Preserve Intent Authority
 
 Cite the exact direct instruction or durable project claim. Separate:
@@ -79,7 +90,7 @@ Use `observation-contract.md`. Produce:
 **Governed target**: <crate, module, type seam, or runtime seam>
 **Contradicting fact**: <one concrete fact>
 **Observation source**: <Cargo metadata | Rust source tokens | syn AST | runtime probe>
-**Observation owner**: <static | semantic | runtime | shared core>
+**Observation owner**: <static | semantic | runtime | shared core | adopter>
 **Scan perimeter**: <anchor and depth>
 **Finding identity**: <stable target, rule key, structured fact>
 **Actionable location**: <derivable file or faithful null>
@@ -129,7 +140,7 @@ Return:
 ```markdown
 ## Tianheng Capability Pressure
 
-**Gap verdict**: TRUE_GAP
+**Gap verdict**: SHAPE_CAPABILITY | ADOPTER_OBSERVER
 **Adopter evidence**: <claim and affected code>
 **Nearest existing capability**: <recipe and exact mismatch>
 **Observation contract**: <bounded measure>
@@ -137,18 +148,25 @@ Return:
 **Fixture matrix**: <positive, precision, error, composition>
 **Feasibility**: <source, cost, limitations>
 **Compatibility effect**: <public API / projection / baseline implications>
-**Upstream owner**: Tianheng maintainers; candidate not accepted or implemented.
+**Observation owner**: <Tianheng maintainers | the adopter>; contract not accepted or
+implemented here.
 ```
 
 If the classification stops earlier, report `ROUTE_FORGE`, `COMPATIBILITY_REQUIRED`,
 `DOCUMENT_ONLY`, `CROSS_LANGUAGE`, `DEFER_OBSERVATION`, or `DEFER_FEASIBILITY`.
 
-## Phase 7: Hand Off Upstream Deliberately
+## Phase 7: Hand Off Deliberately
 
-Follow `upstream-handoff.md`. By default, leave the pressure as a reviewable report. When the user
-explicitly asks to persist it in a Tianheng checkout, follow that repository's current governance
-and proposal workflow. Do not implement the capability, edit Tianheng law, open a remote issue, or
-publish anything unless separately requested and authorized.
+Follow `candidate-handoff.md`. By default, leave the contract as a reviewable report, whichever
+owner it names.
+
+For an `UPSTREAM` owner: when the user explicitly asks to persist it in a Tianheng checkout, follow
+that repository's current governance and proposal workflow. Do not implement the capability, edit
+Tianheng law, open a remote issue, or publish anything unless separately requested and authorized.
+
+For an `ADOPTER` owner: report the observation contract, the bounds the participant must declare,
+and the fixture matrix. Writing the `Observer` is not part of capability shaping and is not
+performed here.
 
 ## Hard Stops
 
@@ -159,4 +177,8 @@ publish anything unless separately requested and authorized.
 - Do not claim precision without a clean adjacent fixture.
 - Do not copy Tianheng's cookbook or pre-design an entire public API.
 - Do not write a no-op adopter boundary, warning-only substitute, or permanent baseline.
-- Do not implement or submit upstream changes as part of capability shaping.
+- Do not implement either owner's observation as part of capability shaping.
+- Do not route a general capability to the adopter to avoid upstream work, nor a house rule upstream
+  to avoid writing one.
+- Do not treat adopter ownership as a lighter gate; a named source, honest perimeter, declared
+  bounds, and both proofs are required either way.

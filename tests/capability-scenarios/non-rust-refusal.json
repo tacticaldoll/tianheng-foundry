@@ -1,6 +1,23 @@
 {
   "id": "non-rust-refusal",
-  "repository": {"rust": false, "tianheng_or_adoption": false, "supported_version": false, "cross_language": false},
-  "claim": {"authority": true, "structural": true, "existing_recipe": false, "observation_source": "source_tokens", "feasible": true},
-  "expected": {"verdict": "STOP_NON_RUST", "pressure_candidate": false, "observation_owner": "none", "write_upstream": false}
+  "repository": {
+    "rust": false,
+    "tianheng_or_adoption": false,
+    "supported_version": false,
+    "cross_language": false
+  },
+  "claim": {
+    "authority": true,
+    "structural": true,
+    "existing_recipe": false,
+    "observation_source": "source_tokens",
+    "feasible": true,
+    "general_capability": true
+  },
+  "expected": {
+    "verdict": "STOP_NON_RUST",
+    "pressure_candidate": false,
+    "observation_owner": "none",
+    "write_upstream": false
+  }
 }

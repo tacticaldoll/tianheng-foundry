@@ -68,3 +68,82 @@ pub fn representative_constitution() -> Constitution {
                 .because("the kernel reads no ambient clock and exposes no async function"),
         )
 }
+
+// The 0.5.0 observation protocol, reached through the same public shell an adopter uses. Present
+// because `shape-capability` now routes an adopter-owned house rule to it: a surface this
+// repository sends someone to must be one the compatibility gate proves is there.
+
+/// What each built-in dimension declares it does not observe.
+///
+/// `observation_bounds()` is not re-exported by the shell; the bounds are reachable anyway because
+/// every dimension's observer delegates `Observer::bounds()` to it.
+pub fn declared_observation_bounds() -> Vec<BoundDecl> {
+    let constitution = representative_constitution();
+    let mut bounds = StaticObserver::new(constitution.static_boundaries().clone()).bounds();
+    bounds.extend(SemanticObserver::new(constitution.semantic_boundaries().clone()).bounds());
+    bounds.extend(RuntimeObserver::new(constitution.runtime_boundaries().to_vec()).bounds());
+    bounds
+}
+
+/// A house rule no dimension of 三儀 observes, owned by the adopter rather than upstream.
+pub struct GovernedSubtreeObserver {
+    subtrees: Vec<String>,
+}
+
+impl GovernedSubtreeObserver {
+    pub fn reading<I: IntoIterator<Item = S>, S: Into<String>>(subtrees: I) -> Self {
+        Self {
+            subtrees: subtrees.into_iter().map(Into::into).collect(),
+        }
+    }
+}
+
+impl Observer for GovernedSubtreeObserver {
+    fn observe(&self, manifest_path: &std::path::Path) -> Outcome {
+        let Some(root) = manifest_path.parent() else {
+            return Outcome::ConstitutionError("manifest has no parent directory".to_string());
+        };
+        let mut read = 0usize;
+        for subtree in &self.subtrees {
+            match std::fs::read_dir(root.join(subtree)) {
+                Ok(entries) => read += entries.count(),
+                Err(error) => {
+                    return Outcome::ConstitutionError(format!(
+                        "cannot read governed subtree '{subtree}': {error}"
+                    ));
+                }
+            }
+        }
+        // `Subject::of` refuses to call a run clean when subtrees were declared and nothing was
+        // read, so a failed look cannot be reported as a sound workspace.
+        match Subject::of(self.subtrees.len(), read) {
+            Some(subject) => Outcome::Clean(subject),
+            None => Outcome::ConstitutionError(
+                "subtrees were declared and no entry was read, so nothing was judged".to_string(),
+            ),
+        }
+    }
+
+    /// No default body exists for this: the protocol refuses a participant that will not state what
+    /// it does not see.
+    fn bounds(&self) -> Vec<BoundDecl> {
+        vec![BoundDecl::pinned(
+            BoundId::new("adopter/one-level-deep"),
+            "an entry nested below the governed subtree",
+            Extent::OutOfReach {
+                because: "the walk reads one level deep, as this bound declares".into(),
+            },
+            "nested_entry_is_not_read",
+        )]
+    }
+}
+
+/// An adopter-owned observation composing into a run beside a built-in dimension.
+pub fn composed_verdict(manifest_path: &std::path::Path) -> Outcome {
+    Run::over(manifest_path)
+        .observe(StaticObserver::new(
+            representative_constitution().static_boundaries().clone(),
+        ))
+        .observe(GovernedSubtreeObserver::reading(["src"]))
+        .verdict()
+}

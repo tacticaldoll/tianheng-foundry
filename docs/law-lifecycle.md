@@ -9,7 +9,9 @@ AdmittedIntent ---- unobservable ----> CapabilityPressure
     |                                      |
     |                                      | shape observation contract
     |                                      v
-    |                               UpstreamCandidate
+    |                          +-----------+-----------+
+    |                          |                       |
+    |                   UpstreamCandidate      AdopterObservation
     |
     | select observation and recipe
     v
@@ -46,7 +48,8 @@ AcceptedLaw ---- deterministic projection ----> GeneratedContext
 | `ProseClaim` | A project statement or direct human instruction | No |
 | `AdmittedIntent` | Structural, authorized, and potentially observable | Candidate work only |
 | `CapabilityPressure` | Authorized structural intent lacks a supported observer | No adopter law |
-| `UpstreamCandidate` | Observation contract and fixture matrix are reviewable | No; Tianheng-owned |
+| `UpstreamCandidate` | A general capability's contract and fixture matrix are reviewable | No; Tianheng-owned |
+| `AdopterObservation` | The gap is the adopter's own house rule, and its contract is theirs to implement as an `Observer` | No; adopter-owned |
 | `BoundaryCandidate` | Generated boundary and reason, not yet proven | Candidate work only |
 | `VerifiedCandidate` | Teeth, precision, freshness, and compatibility are proven | Yes, still unaccepted |
 | `ReviewedCandidate` | Adversarial gates found no blocking defect | No; awaiting human acceptance |
@@ -75,10 +78,15 @@ consume projection and reaction rather than wrapping or imitating either.
 A violation normally directs repair toward the accepted reason. Changing a target, rule,
 parameter, scan depth, severity, or reason is an amendment and requires an explicit request.
 
-A claim Tianheng cannot observe becomes `CapabilityPressure`: evidence for a possible upstream
-capability, not a pretend boundary. `shape-capability` may turn that pressure into an
-`UpstreamCandidate`, but the adopter claim remains prose until Tianheng accepts and implements a
-real observation.
+A claim Tianheng cannot observe becomes `CapabilityPressure`: evidence for a possible observation,
+not a pretend boundary. `shape-capability` shapes that pressure into a contract and names its owner.
+
+A general capability a dimension should hold becomes an `UpstreamCandidate`, and the adopter claim
+remains prose until Tianheng accepts and implements a real observation. An adopter's own house rule
+becomes an `AdopterObservation`: from Tianheng `0.5.0` an `Observer` outside the family can join a
+run, so the adopter can own the reaction rather than wait for one. Ownership is the only thing that
+differs — the named source, the perimeter, the declared bounds, and both proofs are required of
+either, and neither is written by this collection.
 
 ## Baseline Debt
 
