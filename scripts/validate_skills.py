@@ -89,6 +89,20 @@ JSON_MANIFESTS = [
     "compatibility.json",
 ]
 
+# Every upstream this repository pins, and the two places each pin is written: the
+# declaration a reader trusts, and the workflow step that actually fetches it. Nothing
+# made the two agree, so a bumped declaration could ship while CI kept validating the
+# previous release — the failure mode the compatibility runner cannot see, because it
+# only ever inspects the checkout it is handed.
+DEPLOYER_REPOSITORY = "tacticaldoll/agent-skill-deployer"
+TIANHENG_REPOSITORY = "tacticaldoll/tianheng"
+DEPLOYER_PIN = re.compile(
+    r'"agent-skill-deployer @ git\+[^"]*?agent-skill-deployer\.git@(v\d+\.\d+\.\d+)"'
+)
+WORKFLOW_CHECKOUT = re.compile(
+    r"repository:\s*(\S+)\s*\n\s*ref:\s*(\S+)\s*\n"
+)
+
 REQUIRED_FILES = [
     "PROJECT.md",
     "AGENTS.md",
@@ -101,6 +115,11 @@ REQUIRED_FILES = [
     "docs/tianheng-compatibility.md",
     "tests/compatibility/consumer/Cargo.toml",
     "tests/compatibility/consumer/src/lib.rs",
+    ".github/workflows/validate.yml",
+    "tools/th-foundry-cli/pyproject.toml",
+    "tools/th-foundry-cli/README.md",
+    "tools/th-foundry-cli/th_foundry_cli/cli.py",
+    "tools/th-foundry-cli/tests/test_cli.py",
 ]
 
 for skill_name, contract in SKILLS.items():
@@ -323,12 +342,62 @@ def main() -> int:
             f"expected at least 15 baseline scenarios, found {baseline_scenario_count}",
         )
 
+    workflow_path = ROOT / ".github" / "workflows" / "validate.yml"
+    if workflow_path.is_file():
+        fetched = dict(
+            (repository, ref)
+            for repository, ref in WORKFLOW_CHECKOUT.findall(workflow_path.read_text())
+        )
+
+        pyproject = ROOT / "tools" / "th-foundry-cli" / "pyproject.toml"
+        declared_deployer = None
+        if pyproject.is_file():
+            match = DEPLOYER_PIN.search(pyproject.read_text())
+            if not match:
+                fail(
+                    failures,
+                    "tools/th-foundry-cli/pyproject.toml must pin agent-skill-deployer "
+                    "to an exact vX.Y.Z tag",
+                )
+            else:
+                declared_deployer = match.group(1)
+
+        fetched_deployer = fetched.get(DEPLOYER_REPOSITORY)
+        if fetched_deployer is None:
+            fail(
+                failures,
+                f"validate.yml must check out {DEPLOYER_REPOSITORY} to exercise the CLI binding",
+            )
+        elif declared_deployer is not None and fetched_deployer != declared_deployer:
+            fail(
+                failures,
+                f"validate.yml fetches {DEPLOYER_REPOSITORY}@{fetched_deployer} but the CLI "
+                f"binding pins {declared_deployer}",
+            )
+
+        fetched_tianheng = fetched.get(TIANHENG_REPOSITORY)
+        tested = compatibility.get("tianheng", {}).get("tested", [])
+        if fetched_tianheng is None:
+            fail(
+                failures,
+                f"validate.yml must check out {TIANHENG_REPOSITORY} for the compatibility gate",
+            )
+        elif fetched_tianheng.removeprefix("v") not in tested:
+            fail(
+                failures,
+                f"validate.yml fetches {TIANHENG_REPOSITORY}@{fetched_tianheng} but "
+                f"compatibility.json declares tested={tested}",
+            )
+
     if failures:
         for message in failures:
             print(f"error: {message}", file=sys.stderr)
         return 1
 
-    print("ok: repository structure, manifests, references, and compatibility metadata")
+    print(
+        "ok: repository structure, manifests, references, upstream pins, and "
+        "compatibility metadata"
+    )
     return 0
 
 
