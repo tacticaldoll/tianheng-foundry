@@ -18,7 +18,7 @@ adopter's intent as evidence; do not grant the missing reaction imaginary teeth.
 - Read [upstream-handoff.md](references/upstream-handoff.md) before persisting or routing the
   candidate.
 
-These references target Tianheng `0.3.x`. Inspect the adopter's resolved version and Tianheng's
+These references target Tianheng `0.5.x`. Inspect the adopter's resolved version and Tianheng's
 actual public surface before concluding that an observation is absent.
 
 ## Phase 0: Gate Capability Pressure

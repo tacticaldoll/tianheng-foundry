@@ -11,7 +11,7 @@ context, `repair-drift` restores product code after accepted law reacts, and `am
 an explicitly authorized change to accepted law. `review-law` adversarially checks candidates
 before human acceptance; `shape-capability` turns demonstrated observation gaps into bounded
 upstream pressure; `manage-baseline` governs accepted-current drift as a separate ratchet. All
-support Tianheng `>=0.3.0,<0.4.0`.
+support Tianheng `>=0.5.0,<0.6.0`.
 
 ## Standing Decisions
 

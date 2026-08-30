@@ -1,4 +1,4 @@
-# Tianheng 0.3 Recipe Index
+# Tianheng 0.5 Recipe Index
 
 This is a routing index, not an API authority or copy of Tianheng's cookbook. Confirm exact builder
 spelling against the adopter's resolved Tianheng version.
@@ -21,7 +21,7 @@ spelling against the adopter's resolved Tianheng version.
 
 | Declared fact | Representative surface | Observes | Important non-observations |
 |---|---|---|---|
-| Public API must not expose a named type | `SemanticBoundary::must_not_expose` | Named type positions and supported re-exports in the Rust AST | Compiler-wide reachable API closure |
+| Public API must not expose a named type | `SignatureBoundary::must_not_expose` | Named type positions and supported re-exports in the Rust AST | Compiler-wide reachable API closure |
 | Public seams avoid `dyn` | `DynTraitBoundary` | Supported public `dyn` type shapes or named operands | Runtime concrete origin |
 | Public seams avoid `impl Trait` | `ImplTraitBoundary` | Supported public existential type shapes or operands | Runtime implementation choice |
 | Public seams avoid async functions | `AsyncExposureBoundary` | Declared public `async fn`, optionally through subtree | Other I/O or executor use |

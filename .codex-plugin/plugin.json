@@ -1,6 +1,6 @@
 {
   "name": "tianheng-foundry",
-  "version": "0.1.0+codex.20260726185354",
+  "version": "0.1.1+codex.20260830090000",
   "description": "Portable companion skills that forge project-declared Rust architecture constraints into tested Tianheng law candidates.",
   "author": {
     "name": "tacticaldoll",

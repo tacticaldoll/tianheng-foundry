@@ -1,6 +1,6 @@
 # Reaction Contract
 
-Use the adopter's actual Tianheng runner. For supported `0.3.x`, `check --format json` is the
+Use the adopter's actual Tianheng runner. For supported `0.5.x`, `check --format json` is the
 machine contract.
 
 ## Exit Classes

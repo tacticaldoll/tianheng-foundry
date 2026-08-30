@@ -17,7 +17,7 @@ amendment workflow; it does not make the resulting diff accepted automatically.
 - Read [migration-and-projection.md](references/migration-and-projection.md) before sequencing code,
   baseline, or generated-context changes.
 
-These references target Tianheng `0.3.x`. Inspect the adopter's actual law source, runner, and local
+These references target Tianheng `0.5.x`. Inspect the adopter's actual law source, runner, and local
 amendment protocol before relying on exact API spelling.
 
 ## Phase 0: Qualify Existing Law

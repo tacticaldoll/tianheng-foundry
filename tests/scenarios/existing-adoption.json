@@ -2,7 +2,7 @@
   "id": "existing-adoption",
   "repository": {
     "rust": true,
-    "tianheng_version": "0.3.0",
+    "tianheng_version": "0.5.0",
     "mixed_language": false
   },
   "request": {

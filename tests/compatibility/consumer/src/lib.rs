@@ -15,7 +15,7 @@ pub fn representative_constitution() -> Constitution {
                 .because("domain does not import infrastructure"),
         )
         .signature_boundary(
-            SemanticBoundary::in_crate("app")
+            SignatureBoundary::in_crate("app")
                 .module("crate::api")
                 .must_not_expose("crate::infra::DbPool")
                 .because("the public API does not expose the database pool"),

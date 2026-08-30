@@ -16,7 +16,7 @@ reason as fixed authority throughout this workflow.
   law, baseline, projection, or governance configuration.
 - Read [verification.md](references/verification.md) before claiming the drift is repaired.
 
-These references describe the supported Tianheng `0.3.x` reaction contract. Inspect the adopter's
+These references describe the supported Tianheng `0.5.x` reaction contract. Inspect the adopter's
 actual dependency and runner when exact invocation details differ.
 
 ## Phase 0: Establish The Reaction

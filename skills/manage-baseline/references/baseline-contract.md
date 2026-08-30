@@ -1,6 +1,6 @@
 # Structured Baseline Contract
 
-Supported Tianheng `0.3.x` baselines declare:
+Supported Tianheng `0.5.x` baselines declare:
 
 ```json
 {"format": "tianheng.baseline/structured-facts"}

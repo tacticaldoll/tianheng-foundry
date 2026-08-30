@@ -16,7 +16,7 @@ read-only activation workflow; Tianheng remains the projection authority.
 - Read [implementation-handoff.md](references/implementation-handoff.md) before returning control
   to the user's coding workflow.
 
-These references target Tianheng `0.3.x`. Use the adopter's runner and local governance commands
+These references target Tianheng `0.5.x`. Use the adopter's runner and local governance commands
 when they differ from the published binary.
 
 ## Phase 0: Gate Activation

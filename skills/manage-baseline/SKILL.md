@@ -16,7 +16,7 @@ gate; it never changes what the Constitution declares or what Tianheng observes.
   annotation, or retirement.
 - Read [verification.md](references/verification.md) before reporting completion.
 
-These references target Tianheng `0.3.x` structured-fact baselines. Inspect the adopter's resolved
+These references target Tianheng `0.5.x` structured-fact baselines. Inspect the adopter's resolved
 runner and format identifier before acting.
 
 ## Phase 0: Gate Baseline Authority
