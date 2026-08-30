@@ -148,6 +148,13 @@ commit; git does not enable a repository's hook directory by default.
 Use Conventional Commits with a concise body explaining why the change exists and which contract
 it preserves. Do not add AI or tool attribution.
 
+Work on a branch and integrate through a pull request squash-merged into `main`; do not commit
+directly to the default branch. An agent may merge its own pull request once every gate is green
+and the change is a verifiable fact — a defect closed, a pin bumped, a guard added. A change to a
+standing decision in `PROJECT.md`, to licensing, or to any other outward-facing declaration stops
+at the pull request for human acceptance: this repository does not exempt itself from the authority
+transition it asks adopters to keep.
+
 Keep generated caches, build outputs, editor state, and local credentials out of git. Do not modify
 installed plugin caches directly; update the source plugin, advance its Codex cachebuster with the
 plugin-creator helper, then reinstall.
