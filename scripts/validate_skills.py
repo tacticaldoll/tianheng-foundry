@@ -94,6 +94,16 @@ JSON_MANIFESTS = [
 # made the two agree, so a bumped declaration could ship while CI kept validating the
 # previous release — the failure mode the compatibility runner cannot see, because it
 # only ever inspects the checkout it is handed.
+LICENSED_MANIFESTS = [
+    ".claude-plugin/plugin.json",
+    ".codex-plugin/plugin.json",
+    ".cursor-plugin/plugin.json",
+]
+PYPROJECT_LICENSE = re.compile(r'(?m)^license\s*=\s*\{\s*text\s*=\s*"([^"]+)"\s*\}')
+# The stated license ends at the first period that ends a sentence, so a version number
+# inside the name ("Apache-2.0") is not mistaken for that terminator.
+README_LICENSE = re.compile(r"(?m)^## License\n\n([A-Za-z0-9.\-+ ]+?)\.(?=\s|$)")
+
 DEPLOYER_REPOSITORY = "tacticaldoll/agent-skill-deployer"
 TIANHENG_REPOSITORY = "tacticaldoll/tianheng"
 DEPLOYER_PIN = re.compile(
@@ -342,6 +352,52 @@ def main() -> int:
             f"expected at least 15 baseline scenarios, found {baseline_scenario_count}",
         )
 
+    # One licence, stated in five places. The README said `MIT OR Apache-2.0` while the LICENCE
+    # file, three host manifests and the CLI's pyproject all said MIT — a legal declaration that
+    # disagreed with itself, and prose is where it drifted, so prose is included here.
+    declared: dict[str, str] = {}
+    for relative in LICENSED_MANIFESTS:
+        stated = parsed.get(relative, {}).get("license")
+        if stated is None:
+            fail(failures, f"{relative}: must declare a license")
+        else:
+            declared[relative] = stated
+
+    pyproject = ROOT / "tools" / "th-foundry-cli" / "pyproject.toml"
+    if pyproject.is_file():
+        match = PYPROJECT_LICENSE.search(pyproject.read_text())
+        if not match:
+            fail(failures, "tools/th-foundry-cli/pyproject.toml: must declare a license")
+        else:
+            declared["tools/th-foundry-cli/pyproject.toml"] = match.group(1)
+
+    readme = ROOT / "README.md"
+    if readme.is_file():
+        match = README_LICENSE.search(readme.read_text())
+        if not match:
+            fail(failures, "README.md: the License section must state one license")
+        else:
+            declared["README.md"] = match.group(1).strip()
+
+    if declared:
+        agreed = sorted(set(declared.values()))
+        if len(agreed) != 1:
+            fail(
+                failures,
+                "license declarations disagree: "
+                + "; ".join(f"{where}={what!r}" for where, what in sorted(declared.items())),
+            )
+        else:
+            license_file = ROOT / "LICENSE"
+            if license_file.is_file():
+                heading = license_file.read_text().splitlines()[0]
+                if agreed[0] not in heading:
+                    fail(
+                        failures,
+                        f"LICENSE opens with {heading!r}, which does not name the declared "
+                        f"license {agreed[0]!r}",
+                    )
+
     workflow_path = ROOT / ".github" / "workflows" / "validate.yml"
     if workflow_path.is_file():
         fetched = dict(
@@ -395,7 +451,7 @@ def main() -> int:
         return 1
 
     print(
-        "ok: repository structure, manifests, references, upstream pins, and "
+        "ok: repository structure, manifests, references, upstream pins, license, and "
         "compatibility metadata"
     )
     return 0
