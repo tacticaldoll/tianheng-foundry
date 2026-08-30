@@ -10,7 +10,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 SCENARIOS = ROOT / "tests" / "scenarios"
-SUPPORTED_PREFIX = "0.3."
+SUPPORTED_PREFIX = "0.5."
 REQUIRED_IDS = {
     "existing-adoption",
     "explicit-first-adoption",

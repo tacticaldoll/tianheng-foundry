@@ -1,5 +1,5 @@
 name: review-law
-version: 0.1.0
+version: 0.1.1
 status: draft
 family: analysis
 description: Use to adversarially review Tianheng law candidates before human acceptance.

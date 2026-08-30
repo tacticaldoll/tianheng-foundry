@@ -1,5 +1,5 @@
 name: activate-law
-version: 0.1.0
+version: 0.1.1
 status: draft
 family: analysis
 description: Use before Rust code work to select accepted Tianheng law into task-local context.

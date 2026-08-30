@@ -1,5 +1,5 @@
 name: amend-law
-version: 0.1.0
+version: 0.1.1
 status: draft
 family: implementation
 description: Use when an agent has explicit authority to prepare a verified change to an accepted Tianheng boundary.

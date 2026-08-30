@@ -225,7 +225,7 @@ Experimental `0.1.x`. The collection currently contains `forge-law`, `activate-l
 `repair-drift`, `amend-law`, `review-law`, `shape-capability`, and `manage-baseline`. Every skill's
 `skill.yaml` declares `status: draft` for this release — that is deliberate, not an oversight:
 none has yet gone through a documented promotion to `stable`. The initial supported Tianheng line
-is `>=0.3.0,<0.4.0`, with `0.3.0` as the checked representative; wider-range coverage is future
+is `>=0.5.0,<0.6.0`, with `0.5.0` as the checked representative; wider-range coverage is future
 work, not claimed here.
 
 What's actually enforced, versus what still relies on a human following AGENTS.md:
@@ -233,7 +233,7 @@ What's actually enforced, versus what still relies on a human following AGENTS.m
 - **CI-enforced** (`.github/workflows/validate.yml`, on every push and pull request):
   `scripts/validate_skills.py` (distribution structure, manifest consistency, and the full
   `skill.yaml` schema) and the seven `scripts/test_*_scenarios.py` suites, plus a separate job that
-  compiles representative generated vocabulary against a real `tianheng@v0.3.0` checkout.
+  compiles representative generated vocabulary against a real `tianheng@v0.5.0` checkout.
   `.githooks/pre-commit` runs the same network-free checks locally once a clone enables it with
   `git config core.hooksPath .githooks` (see Validate above) — CI still catches anyone who hasn't.
 - **Self-policed** (no script fails if skipped): the `skill-creator`/`plugin-creator`

@@ -199,8 +199,8 @@ def main() -> int:
             fail(failures, f"{relative}: expected one {NAME!r} plugin entry")
 
     compatibility = parsed.get("compatibility.json", {})
-    if compatibility.get("tianheng", {}).get("supported") != ">=0.3.0,<0.4.0":
-        fail(failures, "compatibility.json: expected Tianheng 0.3.x support range")
+    if compatibility.get("tianheng", {}).get("supported") != ">=0.5.0,<0.6.0":
+        fail(failures, "compatibility.json: expected Tianheng 0.5.x support range")
     if compatibility.get("tianheng", {}).get("source_env") != "TIANHENG_SOURCE":
         fail(failures, "compatibility.json: local source input must be TIANHENG_SOURCE")
 

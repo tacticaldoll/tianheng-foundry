@@ -1,6 +1,6 @@
 # Tianheng Compatibility
 
-The initial supported line is Tianheng `>=0.3.0,<0.4.0`; `0.3.0` is the checked representative.
+The supported line is Tianheng `>=0.5.0,<0.6.0`; `0.5.0` is the checked representative.
 `compatibility.json` is the machine-readable declaration.
 
 The recipe index carries routing knowledge and observation bounds, not a complete API copy.
