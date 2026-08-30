@@ -94,6 +94,12 @@ JSON_MANIFESTS = [
 # made the two agree, so a bumped declaration could ship while CI kept validating the
 # previous release — the failure mode the compatibility runner cannot see, because it
 # only ever inspects the checkout it is handed.
+# A skill naming a Tianheng line other than the declared one routes an adopter by a surface this
+# repository no longer supports. Nine such lines survived a supported-line move that changed every
+# machine-readable declaration, because nothing compared the instructions to it.
+SKILL_VERSION_LINE = re.compile(r"`(\d+\.\d+)\.x`")
+DECLARED_LINE = re.compile(r">=(\d+\.\d+)\.")
+
 DEPLOYER_REPOSITORY = "tacticaldoll/agent-skill-deployer"
 TIANHENG_REPOSITORY = "tacticaldoll/tianheng"
 DEPLOYER_PIN = re.compile(
@@ -203,6 +209,20 @@ def main() -> int:
         fail(failures, "compatibility.json: expected Tianheng 0.5.x support range")
     if compatibility.get("tianheng", {}).get("source_env") != "TIANHENG_SOURCE":
         fail(failures, "compatibility.json: local source input must be TIANHENG_SOURCE")
+
+    declared_line = DECLARED_LINE.match(
+        compatibility.get("tianheng", {}).get("supported", "")
+    )
+    if declared_line:
+        expected = declared_line.group(1)
+        for markdown in sorted((ROOT / "skills").rglob("*.md")):
+            for named in SKILL_VERSION_LINE.findall(markdown.read_text()):
+                if named != expected:
+                    fail(
+                        failures,
+                        f"{markdown.relative_to(ROOT)}: names Tianheng `{named}.x` but the "
+                        f"declared supported line is `{expected}.x`",
+                    )
 
     for skill_name, contract in SKILLS.items():
         skill_path = ROOT / "skills" / skill_name / "SKILL.md"

@@ -20,7 +20,7 @@ neither.
 - Read [authority-transition.md](references/authority-transition.md) before editing accepted law or
   changing the source prose.
 
-The references are selection and safety guidance for Tianheng `0.3.x`, not a replacement for the
+The references are selection and safety guidance for Tianheng `0.5.x`, not a replacement for the
 adopter's dependency docs or Tianheng's upstream cookbook. Inspect the actual dependency surface
 when exact API spelling matters.
 

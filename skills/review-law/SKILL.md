@@ -16,7 +16,7 @@ candidate proves and where it fails, but do not repair the diff or grant authori
   reactions.
 - Read [verdict-contract.md](references/verdict-contract.md) before assigning severity or verdict.
 
-These references target Tianheng `0.3.x`. Inspect the candidate's actual dependency and project
+These references target Tianheng `0.5.x`. Inspect the candidate's actual dependency and project
 review policy when compatibility or authority differs.
 
 ## Phase 0: Resolve The Review Scope

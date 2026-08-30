@@ -142,9 +142,17 @@ and `Owner::Adopter` is upstream's own vocabulary for it.
 value naming a Tianheng dimension. The question is whether it gains a fourth. That is left open
 here; the second proof above exists to make it decidable on evidence.
 
-## Follow-up found while measuring
+## What the supported line turned out to cost
 
-The supported line is written in four places: `compatibility.json`, the literal
-`validate_skills.py` asserts it against, `test_scenarios.py`'s `SUPPORTED_PREFIX`, and the workflow
-ref. The pin-agreement gate now guards the last against `compatibility.json`; `SUPPORTED_PREFIX` is
-still an unguarded copy, and this upgrade had to find it by grep.
+It is written in more places than the declaration, and most of them had nothing comparing them to
+it: the literal `validate_skills.py` asserts, `test_scenarios.py`'s `SUPPORTED_PREFIX`, the workflow
+ref, six scenario fixtures, and — found last, after every machine-readable declaration had already
+moved — **nine instructional lines** across seven skills and two references, each telling an adopter
+that the guidance targets `0.3.x`.
+
+That last set is the one that matters: a skill naming a line this repository no longer supports
+routes an adopter by a surface that no longer exists, and it is invisible to every gate that reads
+JSON. It is now checked — a Tianheng line named anywhere under `skills/` must equal the declared
+one. The pin-agreement gate already covers the workflow ref.
+
+`SUPPORTED_PREFIX` remains an unguarded copy.
