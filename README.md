@@ -243,4 +243,4 @@ What's actually enforced, versus what still relies on a human following AGENTS.m
 
 ## License
 
-MIT OR Apache-2.0.
+MIT. See [LICENSE](LICENSE).

@@ -89,6 +89,30 @@ JSON_MANIFESTS = [
     "compatibility.json",
 ]
 
+# Every upstream this repository pins, and the two places each pin is written: the
+# declaration a reader trusts, and the workflow step that actually fetches it. Nothing
+# made the two agree, so a bumped declaration could ship while CI kept validating the
+# previous release — the failure mode the compatibility runner cannot see, because it
+# only ever inspects the checkout it is handed.
+LICENSED_MANIFESTS = [
+    ".claude-plugin/plugin.json",
+    ".codex-plugin/plugin.json",
+    ".cursor-plugin/plugin.json",
+]
+PYPROJECT_LICENSE = re.compile(r'(?m)^license\s*=\s*\{\s*text\s*=\s*"([^"]+)"\s*\}')
+# The stated license ends at the first period that ends a sentence, so a version number
+# inside the name ("Apache-2.0") is not mistaken for that terminator.
+README_LICENSE = re.compile(r"(?m)^## License\n\n([A-Za-z0-9.\-+ ]+?)\.(?=\s|$)")
+
+DEPLOYER_REPOSITORY = "tacticaldoll/agent-skill-deployer"
+TIANHENG_REPOSITORY = "tacticaldoll/tianheng"
+DEPLOYER_PIN = re.compile(
+    r'"agent-skill-deployer @ git\+[^"]*?agent-skill-deployer\.git@(v\d+\.\d+\.\d+)"'
+)
+WORKFLOW_CHECKOUT = re.compile(
+    r"repository:\s*(\S+)\s*\n\s*ref:\s*(\S+)\s*\n"
+)
+
 REQUIRED_FILES = [
     "PROJECT.md",
     "AGENTS.md",
@@ -101,6 +125,11 @@ REQUIRED_FILES = [
     "docs/tianheng-compatibility.md",
     "tests/compatibility/consumer/Cargo.toml",
     "tests/compatibility/consumer/src/lib.rs",
+    ".github/workflows/validate.yml",
+    "tools/th-foundry-cli/pyproject.toml",
+    "tools/th-foundry-cli/README.md",
+    "tools/th-foundry-cli/th_foundry_cli/cli.py",
+    "tools/th-foundry-cli/tests/test_cli.py",
 ]
 
 for skill_name, contract in SKILLS.items():
@@ -323,12 +352,108 @@ def main() -> int:
             f"expected at least 15 baseline scenarios, found {baseline_scenario_count}",
         )
 
+    # One licence, stated in five places. The README said `MIT OR Apache-2.0` while the LICENCE
+    # file, three host manifests and the CLI's pyproject all said MIT — a legal declaration that
+    # disagreed with itself, and prose is where it drifted, so prose is included here.
+    declared: dict[str, str] = {}
+    for relative in LICENSED_MANIFESTS:
+        stated = parsed.get(relative, {}).get("license")
+        if stated is None:
+            fail(failures, f"{relative}: must declare a license")
+        else:
+            declared[relative] = stated
+
+    pyproject = ROOT / "tools" / "th-foundry-cli" / "pyproject.toml"
+    if pyproject.is_file():
+        match = PYPROJECT_LICENSE.search(pyproject.read_text())
+        if not match:
+            fail(failures, "tools/th-foundry-cli/pyproject.toml: must declare a license")
+        else:
+            declared["tools/th-foundry-cli/pyproject.toml"] = match.group(1)
+
+    readme = ROOT / "README.md"
+    if readme.is_file():
+        match = README_LICENSE.search(readme.read_text())
+        if not match:
+            fail(failures, "README.md: the License section must state one license")
+        else:
+            declared["README.md"] = match.group(1).strip()
+
+    if declared:
+        agreed = sorted(set(declared.values()))
+        if len(agreed) != 1:
+            fail(
+                failures,
+                "license declarations disagree: "
+                + "; ".join(f"{where}={what!r}" for where, what in sorted(declared.items())),
+            )
+        else:
+            license_file = ROOT / "LICENSE"
+            if license_file.is_file():
+                heading = license_file.read_text().splitlines()[0]
+                if agreed[0] not in heading:
+                    fail(
+                        failures,
+                        f"LICENSE opens with {heading!r}, which does not name the declared "
+                        f"license {agreed[0]!r}",
+                    )
+
+    workflow_path = ROOT / ".github" / "workflows" / "validate.yml"
+    if workflow_path.is_file():
+        fetched = dict(
+            (repository, ref)
+            for repository, ref in WORKFLOW_CHECKOUT.findall(workflow_path.read_text())
+        )
+
+        pyproject = ROOT / "tools" / "th-foundry-cli" / "pyproject.toml"
+        declared_deployer = None
+        if pyproject.is_file():
+            match = DEPLOYER_PIN.search(pyproject.read_text())
+            if not match:
+                fail(
+                    failures,
+                    "tools/th-foundry-cli/pyproject.toml must pin agent-skill-deployer "
+                    "to an exact vX.Y.Z tag",
+                )
+            else:
+                declared_deployer = match.group(1)
+
+        fetched_deployer = fetched.get(DEPLOYER_REPOSITORY)
+        if fetched_deployer is None:
+            fail(
+                failures,
+                f"validate.yml must check out {DEPLOYER_REPOSITORY} to exercise the CLI binding",
+            )
+        elif declared_deployer is not None and fetched_deployer != declared_deployer:
+            fail(
+                failures,
+                f"validate.yml fetches {DEPLOYER_REPOSITORY}@{fetched_deployer} but the CLI "
+                f"binding pins {declared_deployer}",
+            )
+
+        fetched_tianheng = fetched.get(TIANHENG_REPOSITORY)
+        tested = compatibility.get("tianheng", {}).get("tested", [])
+        if fetched_tianheng is None:
+            fail(
+                failures,
+                f"validate.yml must check out {TIANHENG_REPOSITORY} for the compatibility gate",
+            )
+        elif fetched_tianheng.removeprefix("v") not in tested:
+            fail(
+                failures,
+                f"validate.yml fetches {TIANHENG_REPOSITORY}@{fetched_tianheng} but "
+                f"compatibility.json declares tested={tested}",
+            )
+
     if failures:
         for message in failures:
             print(f"error: {message}", file=sys.stderr)
         return 1
 
-    print("ok: repository structure, manifests, references, and compatibility metadata")
+    print(
+        "ok: repository structure, manifests, references, upstream pins, license, and "
+        "compatibility metadata"
+    )
     return 0
 
 
