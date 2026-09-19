@@ -1,0 +1,13 @@
+{
+  "name": "tianheng-foundry",
+  "owner": {
+    "name": "tacticaldoll"
+  },
+  "plugins": [
+    {
+      "name": "tianheng-foundry",
+      "source": "./",
+      "description": "Forge declared Rust architecture prose into tested Tianheng law candidates."
+    }
+  ]
+}

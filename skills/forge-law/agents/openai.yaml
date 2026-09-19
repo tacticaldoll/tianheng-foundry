@@ -1,0 +1,6 @@
+interface:
+  display_name: "Forge Tianheng Law"
+  short_description: "Turn Rust architecture prose into reacting law"
+  default_prompt: "Use $forge-law to replace this declared Rust architecture constraint with a tested Tianheng law candidate."
+policy:
+  allow_implicit_invocation: true

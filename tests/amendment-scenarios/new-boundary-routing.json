@@ -1,0 +1,18 @@
+{
+  "id": "new-boundary-routing",
+  "repository": {
+    "existing_boundary": false,
+    "supported_version": true
+  },
+  "request": {
+    "explicit_amendment": true,
+    "authority_conflict": false,
+    "observable": true,
+    "class": "tighten"
+  },
+  "expected": {
+    "verdict": "ROUTE_FORGE",
+    "edit_law_candidate": false,
+    "proof_profile": "NONE"
+  }
+}

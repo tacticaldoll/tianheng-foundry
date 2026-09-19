@@ -1,0 +1,5 @@
+{
+  "id": "compatibility-unknown",
+  "candidate": {"law_candidate": true, "authority": true, "existing_law_change": false, "explicit_amendment": false, "baseline_change": false, "baseline_authority": false, "observable": true, "reason_bounded": true, "compatibility_evidence": false, "violating_proof": "enforced", "clean_precision": true, "redundant": false, "projection_fresh": true},
+  "expected": {"verdict": "REVISE", "blocking_finding": "COMPATIBILITY", "acceptance_authority": "HUMAN"}
+}

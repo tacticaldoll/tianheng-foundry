@@ -1,0 +1,10 @@
+{
+  "id": "route-repair",
+  "repository": {"rust": true, "tianheng": true, "projection_ok": true},
+  "request": {
+    "route": "repair",
+    "touch_set_known": true,
+    "impacts": {"direct": true, "dependency": false, "semantic": false, "runtime": false, "workspace": false}
+  },
+  "expected": {"verdict": "ROUTE_REPAIR", "selected_tiers": [], "write_workspace": false}
+}

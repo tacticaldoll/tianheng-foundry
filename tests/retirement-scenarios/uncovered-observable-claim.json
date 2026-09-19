@@ -1,0 +1,9 @@
+{
+  "id": "uncovered-observable-claim",
+  "repository": {"rust": true, "tianheng": true, "projection_ok": true},
+  "request": {"kind": "sweep"},
+  "comments": [
+    {"id": "commands-only-in-commands", "form": "line", "claim": "structural", "perimeter": "none", "severity": "enforce", "baselined": false, "observable": true}
+  ],
+  "expected": {"verdict": "NOTHING_COVERED", "retire": [], "routes": {"amend": [], "forge": ["commands-only-in-commands"], "baseline": [], "capability": []}, "write_workspace": false}
+}

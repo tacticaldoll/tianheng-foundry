@@ -1,0 +1,6 @@
+interface:
+  display_name: "Review Tianheng Law"
+  short_description: "Adversarially review Tianheng law candidates"
+  default_prompt: "Use $review-law to review this Tianheng law candidate before human acceptance."
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,18 @@
+{
+  "id": "reason-overreach",
+  "repository": {
+    "existing_boundary": true,
+    "supported_version": true
+  },
+  "request": {
+    "explicit_amendment": true,
+    "authority_conflict": false,
+    "observable": false,
+    "class": "reason"
+  },
+  "expected": {
+    "verdict": "STOP_CAPABILITY_PRESSURE",
+    "edit_law_candidate": false,
+    "proof_profile": "NONE"
+  }
+}

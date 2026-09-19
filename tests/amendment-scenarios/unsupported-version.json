@@ -1,0 +1,18 @@
+{
+  "id": "unsupported-version",
+  "repository": {
+    "existing_boundary": true,
+    "supported_version": false
+  },
+  "request": {
+    "explicit_amendment": true,
+    "authority_conflict": false,
+    "observable": true,
+    "class": "retarget"
+  },
+  "expected": {
+    "verdict": "STOP_COMPATIBILITY_REQUIRED",
+    "edit_law_candidate": false,
+    "proof_profile": "NONE"
+  }
+}

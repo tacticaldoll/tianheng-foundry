@@ -1,0 +1,52 @@
+name: validate
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  repository:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate distribution and scenarios
+        run: |
+          python3 scripts/validate_skills.py
+          python3 scripts/test_scenarios.py
+          python3 scripts/test_repair_scenarios.py
+          python3 scripts/test_amendment_scenarios.py
+          python3 scripts/test_activation_scenarios.py
+          python3 scripts/test_review_scenarios.py
+          python3 scripts/test_capability_scenarios.py
+          python3 scripts/test_baseline_scenarios.py
+          python3 scripts/test_retirement_scenarios.py
+
+  tianheng-compatibility:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Resolve the declared upstream checkout
+        id: upstream
+        run: |
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          tianheng = json.load(open("compatibility.json"))["tianheng"]
+          print(f"repository={tianheng['repository']}")
+          print(f"ref={tianheng['tag_format'].format(version=tianheng['representative'])}")
+          PY
+      - uses: actions/checkout@v4
+        with:
+          repository: ${{ steps.upstream.outputs.repository }}
+          ref: ${{ steps.upstream.outputs.ref }}
+          path: _tianheng
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Fetch Rust dependencies
+        working-directory: _tianheng
+        run: cargo fetch --locked
+      - name: Compile representative declarations
+        env:
+          TIANHENG_SOURCE: ${{ github.workspace }}/_tianheng
+        run: python3 scripts/check_tianheng_compatibility.py

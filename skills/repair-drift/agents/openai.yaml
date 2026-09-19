@@ -1,0 +1,6 @@
+interface:
+  display_name: "Repair Tianheng Drift"
+  short_description: "Repair code toward an existing Tianheng law"
+  default_prompt: "Use $repair-drift to repair this Tianheng violation without weakening the accepted law."
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,7 @@
+{
+  "id": "ungoverned-rust-refusal",
+  "repository": {"rust": true, "tianheng": false, "projection_ok": false},
+  "request": {"kind": "sweep"},
+  "comments": [],
+  "expected": {"verdict": "STOP_UNGOVERNED", "retire": [], "routes": {"amend": [], "forge": [], "baseline": [], "capability": []}, "write_workspace": false}
+}

@@ -1,0 +1,23 @@
+{
+  "id": "explicit-amendment-routing",
+  "reaction": {
+    "exit_code": 1,
+    "violations": [
+      {
+        "severity": "enforce",
+        "baselined": false,
+        "polarity": "deny_breach"
+      }
+    ]
+  },
+  "request": {
+    "explicit_advisory_repair": false,
+    "asks_to_change_law": true,
+    "explicit_amendment": true
+  },
+  "expected": {
+    "verdict": "ROUTE_AMENDMENT",
+    "edit_product": false,
+    "edit_law": false
+  }
+}

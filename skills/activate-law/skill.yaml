@@ -1,0 +1,18 @@
+name: activate-law
+version: 0.1.0
+status: draft
+family: analysis
+description: Use before Rust code work to select accepted Tianheng law into task-local context.
+triggers:
+  - agent is about to inspect or change Rust code in a Tianheng-governed workspace
+  - user asks for a Rust implementation or refactor under existing Tianheng law
+  - agent needs to identify relevant boundaries before planning a governed change
+entrypoint: SKILL.md
+resources:
+  references: references/
+compatibility:
+  - openai-codex
+  - claude
+  - cursor
+  - gemini
+  - generic-llm-agent

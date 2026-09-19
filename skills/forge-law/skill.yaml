@@ -1,0 +1,18 @@
+name: forge-law
+version: 0.1.0
+status: draft
+family: implementation
+description: Use when an agent needs to replace a declared Rust architecture constraint with a tested Tianheng law candidate while preserving observability and human authority.
+triggers:
+  - user asks to replace Rust architecture prose with enforceable Tianheng code
+  - agent is about to add a normative architecture rule to a Rust project that uses Tianheng
+  - user explicitly asks to adopt Tianheng for one declared Rust architecture constraint
+entrypoint: SKILL.md
+resources:
+  references: references/
+compatibility:
+  - openai-codex
+  - claude
+  - cursor
+  - gemini
+  - generic-llm-agent

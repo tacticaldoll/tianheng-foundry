@@ -1,0 +1,7 @@
+{
+  "id": "projection-error",
+  "repository": {"rust": true, "tianheng": true, "projection_ok": false},
+  "request": {"kind": "sweep"},
+  "comments": [],
+  "expected": {"verdict": "STOP_PROJECTION_ERROR", "retire": [], "routes": {"amend": [], "forge": [], "baseline": [], "capability": []}, "write_workspace": false}
+}

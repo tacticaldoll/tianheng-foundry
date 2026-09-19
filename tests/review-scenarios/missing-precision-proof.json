@@ -1,0 +1,5 @@
+{
+  "id": "missing-precision-proof",
+  "candidate": {"law_candidate": true, "authority": true, "existing_law_change": false, "explicit_amendment": false, "baseline_change": false, "baseline_authority": false, "observable": true, "reason_bounded": true, "compatibility_evidence": true, "violating_proof": "enforced", "clean_precision": false, "redundant": false, "projection_fresh": true},
+  "expected": {"verdict": "REVISE", "blocking_finding": "MISSING_PRECISION_PROOF", "acceptance_authority": "HUMAN"}
+}

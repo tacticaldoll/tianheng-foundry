@@ -1,0 +1,9 @@
+{
+  "id": "warn-only-coverage-refusal",
+  "repository": {"rust": true, "tianheng": true, "projection_ok": true},
+  "request": {"kind": "apply"},
+  "comments": [
+    {"id": "api-hides-pool", "form": "line", "claim": "structural", "perimeter": "covers-whole", "severity": "warn", "baselined": false, "observable": true}
+  ],
+  "expected": {"verdict": "NOTHING_COVERED", "retire": [], "routes": {"amend": ["api-hides-pool"], "forge": [], "baseline": [], "capability": []}, "write_workspace": false}
+}

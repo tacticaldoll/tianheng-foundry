@@ -1,0 +1,6 @@
+interface:
+  display_name: "Retire Covered Prose"
+  short_description: "Delete only comments an enforced boundary already holds"
+  default_prompt: "Use $retire-covered-prose to find which comments accepted Tianheng law already holds, and retire only those."
+policy:
+  allow_implicit_invocation: true

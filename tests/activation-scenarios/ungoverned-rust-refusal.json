@@ -1,0 +1,10 @@
+{
+  "id": "ungoverned-rust-refusal",
+  "repository": {"rust": true, "tianheng": false, "projection_ok": false},
+  "request": {
+    "route": "implementation",
+    "touch_set_known": true,
+    "impacts": {"direct": false, "dependency": false, "semantic": false, "runtime": false, "workspace": false}
+  },
+  "expected": {"verdict": "STOP_UNGOVERNED", "selected_tiers": [], "write_workspace": false}
+}

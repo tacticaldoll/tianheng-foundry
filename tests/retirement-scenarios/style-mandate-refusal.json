@@ -1,0 +1,9 @@
+{
+  "id": "style-mandate-refusal",
+  "repository": {"rust": true, "tianheng": true, "projection_ok": true},
+  "request": {"kind": "style-mandate"},
+  "comments": [
+    {"id": "domain-imports", "form": "line", "claim": "structural", "perimeter": "covers-whole", "severity": "enforce", "baselined": false, "observable": true}
+  ],
+  "expected": {"verdict": "REFUSE_STYLE_REQUEST", "retire": [], "routes": {"amend": [], "forge": [], "baseline": [], "capability": []}, "write_workspace": false}
+}

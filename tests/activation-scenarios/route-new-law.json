@@ -1,0 +1,10 @@
+{
+  "id": "route-new-law",
+  "repository": {"rust": true, "tianheng": true, "projection_ok": true},
+  "request": {
+    "route": "new-law",
+    "touch_set_known": true,
+    "impacts": {"direct": false, "dependency": false, "semantic": false, "runtime": false, "workspace": false}
+  },
+  "expected": {"verdict": "ROUTE_FORGE", "selected_tiers": [], "write_workspace": false}
+}

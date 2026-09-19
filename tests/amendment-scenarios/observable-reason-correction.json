@@ -1,0 +1,18 @@
+{
+  "id": "observable-reason-correction",
+  "repository": {
+    "existing_boundary": true,
+    "supported_version": true
+  },
+  "request": {
+    "explicit_amendment": true,
+    "authority_conflict": false,
+    "observable": true,
+    "class": "reason"
+  },
+  "expected": {
+    "verdict": "AMEND_CANDIDATE",
+    "edit_law_candidate": true,
+    "proof_profile": "REACTION_STABLE_PROJECTION_CHANGED"
+  }
+}

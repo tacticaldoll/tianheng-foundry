@@ -1,0 +1,9 @@
+{
+  "id": "apply-authority-write",
+  "repository": {"rust": true, "tianheng": true, "projection_ok": true},
+  "request": {"kind": "apply"},
+  "comments": [
+    {"id": "kernel-sync", "form": "module", "claim": "structural", "perimeter": "covers-whole", "severity": "enforce", "baselined": false, "observable": true}
+  ],
+  "expected": {"verdict": "RETIRE", "retire": ["kernel-sync"], "routes": {"amend": [], "forge": [], "baseline": [], "capability": []}, "write_workspace": true}
+}

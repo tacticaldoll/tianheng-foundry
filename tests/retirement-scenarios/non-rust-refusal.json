@@ -1,0 +1,7 @@
+{
+  "id": "non-rust-refusal",
+  "repository": {"rust": false, "tianheng": false, "projection_ok": false},
+  "request": {"kind": "sweep"},
+  "comments": [],
+  "expected": {"verdict": "STOP_NON_RUST", "retire": [], "routes": {"amend": [], "forge": [], "baseline": [], "capability": []}, "write_workspace": false}
+}

@@ -1,0 +1,10 @@
+{
+  "id": "fully-covered-retirement",
+  "repository": {"rust": true, "tianheng": true, "projection_ok": true},
+  "request": {"kind": "sweep"},
+  "comments": [
+    {"id": "domain-imports", "form": "line", "claim": "structural", "perimeter": "covers-whole", "severity": "enforce", "baselined": false, "observable": true},
+    {"id": "domain-reachability", "form": "module", "claim": "structural", "perimeter": "narrower-than-claim", "severity": "enforce", "baselined": false, "observable": true}
+  ],
+  "expected": {"verdict": "RETIRE", "retire": ["domain-imports"], "routes": {"amend": ["domain-reachability"], "forge": [], "baseline": [], "capability": []}, "write_workspace": false}
+}

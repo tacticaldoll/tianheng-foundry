@@ -1,0 +1,9 @@
+{
+  "id": "rustdoc-out-of-corpus",
+  "repository": {"rust": true, "tianheng": true, "projection_ok": true},
+  "request": {"kind": "apply"},
+  "comments": [
+    {"id": "public-fn-doc", "form": "rustdoc-public", "claim": "structural", "perimeter": "covers-whole", "severity": "enforce", "baselined": false, "observable": true}
+  ],
+  "expected": {"verdict": "NOTHING_COVERED", "retire": [], "routes": {"amend": [], "forge": [], "baseline": [], "capability": []}, "write_workspace": false}
+}

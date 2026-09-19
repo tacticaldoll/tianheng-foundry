@@ -1,0 +1,17 @@
+{
+  "id": "constitution-error",
+  "reaction": {
+    "exit_code": 2,
+    "violations": []
+  },
+  "request": {
+    "explicit_advisory_repair": false,
+    "asks_to_change_law": false,
+    "explicit_amendment": false
+  },
+  "expected": {
+    "verdict": "STOP_REACTION_ERROR",
+    "edit_product": false,
+    "edit_law": false
+  }
+}

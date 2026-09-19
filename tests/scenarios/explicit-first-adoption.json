@@ -1,0 +1,22 @@
+{
+  "id": "explicit-first-adoption",
+  "repository": {
+    "rust": true,
+    "tianheng_version": null,
+    "mixed_language": false
+  },
+  "request": {
+    "explicit_adoption": true,
+    "claim_authority": "direct-user",
+    "claim_class": "structural",
+    "observable": true,
+    "accepted_law_change": false,
+    "explicit_amendment": false
+  },
+  "expected": {
+    "verdict": "ADMIT",
+    "write_candidate": true,
+    "scope": "cargo-workspace",
+    "authority": "VerifiedCandidate"
+  }
+}

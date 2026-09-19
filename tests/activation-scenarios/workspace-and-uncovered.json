@@ -1,0 +1,10 @@
+{
+  "id": "workspace-and-uncovered",
+  "repository": {"rust": true, "tianheng": true, "projection_ok": true},
+  "request": {
+    "route": "implementation",
+    "touch_set_known": true,
+    "impacts": {"direct": false, "dependency": false, "semantic": false, "runtime": false, "workspace": true}
+  },
+  "expected": {"verdict": "ACTIVATE", "selected_tiers": ["workspace", "uncovered"], "write_workspace": false}
+}

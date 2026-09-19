@@ -1,0 +1,18 @@
+name: retire-covered-prose
+version: 0.1.0
+status: draft
+family: implementation
+description: Use in a Tianheng-governed Rust workspace to delete only the comments an enforced boundary already holds.
+triggers:
+  - user asks which code comments existing Tianheng law has made redundant
+  - user asks to retire architecture comments that a boundary now reacts to
+  - agent finished forging or amending law and asks what source prose is now covered
+entrypoint: SKILL.md
+resources:
+  references: references/
+compatibility:
+  - openai-codex
+  - claude
+  - cursor
+  - gemini
+  - generic-llm-agent

@@ -1,0 +1,6 @@
+{
+  "id": "unqualified-rust-refusal",
+  "repository": {"rust": true, "tianheng_or_adoption": false, "supported_version": true, "cross_language": false},
+  "claim": {"authority": true, "structural": true, "existing_recipe": false, "observation_source": "source_tokens", "feasible": true},
+  "expected": {"verdict": "STOP_UNQUALIFIED", "pressure_candidate": false, "observation_owner": "none", "write_upstream": false}
+}

@@ -1,0 +1,9 @@
+{
+  "id": "claim-broader-than-perimeter",
+  "repository": {"rust": true, "tianheng": true, "projection_ok": true},
+  "request": {"kind": "apply"},
+  "comments": [
+    {"id": "domain-never-touches-infra", "form": "line", "claim": "structural", "perimeter": "narrower-than-claim", "severity": "enforce", "baselined": false, "observable": true}
+  ],
+  "expected": {"verdict": "NOTHING_COVERED", "retire": [], "routes": {"amend": ["domain-never-touches-infra"], "forge": [], "baseline": [], "capability": []}, "write_workspace": false}
+}

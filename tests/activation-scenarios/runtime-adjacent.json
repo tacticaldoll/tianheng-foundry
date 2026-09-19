@@ -1,0 +1,10 @@
+{
+  "id": "runtime-adjacent",
+  "repository": {"rust": true, "tianheng": true, "projection_ok": true},
+  "request": {
+    "route": "implementation",
+    "touch_set_known": true,
+    "impacts": {"direct": true, "dependency": false, "semantic": false, "runtime": true, "workspace": false}
+  },
+  "expected": {"verdict": "ACTIVATE", "selected_tiers": ["direct", "runtime"], "write_workspace": false}
+}
